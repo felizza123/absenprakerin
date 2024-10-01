@@ -34,7 +34,7 @@ class DatasiswaController extends Controller
 
         ]);
         $datasiswa = new Datasiswa();
-        $datasiswa->name = $request->name;
+        $datasiswa->nama = $request->nama;
         $datasiswa->save();
 
         return redirect('admin/datasiswa');
@@ -45,7 +45,8 @@ class DatasiswaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $datasiswa = Datasiswa::find($id);
+        return view('pages.datasiswa.show', compact('datasiswa'));
     }
 
     /**
@@ -53,7 +54,8 @@ class DatasiswaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $datasiswa = Datasiswa::find($id);
+        return view('pages.datasiswa.edit', compact('datasiswa'));
     }
 
     /**
@@ -61,7 +63,15 @@ class DatasiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+        ]);
+            $datasiswas = Datasiswa::find($id);
+            $datasiswas->nama = $request->nama;
+            $datasiswas->save();
+            return redirect('admin/datasiswa');
+    
+
     }
 
     /**
@@ -69,6 +79,8 @@ class DatasiswaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $datasiswas = Datasiswa::find($id);
+        $datasiswas->delete();
+        return redirect('admin/datasiswa');
     }
 }

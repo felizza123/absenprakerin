@@ -5,21 +5,20 @@
         <div class="page-title mb-3">
             <h3>
                 <span class="bi bi-building"></span>
-                Create New - datasiswas
+                Edit - Datasiswa
             </h3>
         </div>
-
-        <a href="{{route('admin.datasiswa.index')}}" class="btn m-3 btn-primary">Kembali</a>
 
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('admin.datasiswa.store')}}" method="POST">
-                        @csrf 
+                    <form action="{{route('admin.datasiswa.update', $datasiswa->id)}}" method="POST">
+                        @csrf
+                        @method('PUT')
 
                         <div class="form-group mb-2">
-                            <label for="nama">Nama <span class="text-danger">*</span></label>
-                            <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{old('nama')}}">
+                            <label for="name">Nama <span class="text-danger">*</span></label>
+                            <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{$datasiswa->nama}}">
 
                             @error('nama')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -30,6 +29,7 @@
 
         <button type="submit" class="btn btn-primary">Simpan</button>
             <a href="{{route('admin.datasiswa.index')}}" class="btn btn-secondary">Batal</a>
+            
     </form>
     </div>
 @endsection
