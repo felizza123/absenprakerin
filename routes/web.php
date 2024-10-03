@@ -13,12 +13,12 @@ Auth::routes([
     'verify' => false
 ]);
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function()  {
+    Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function() {
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
     Route::get('/dashboard',[App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
-    //data siswa
+    //ADMIN//data siswa
     Route::resource('/datasiswa', App\Http\Controllers\DatasiswaController::class);
 
     //data jurnal
@@ -26,4 +26,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     //data absen
     Route::resource('/dataabsen', App\Http\Controllers\DataabsenController::class)->only(['index', 'show', 'destroy']);
+
+    //SISWA
+    //absensi
+    Route::resource('/absensi', App\Http\Controllers\AbsensiController::class);
+    
 });

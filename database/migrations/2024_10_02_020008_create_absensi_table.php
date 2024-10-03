@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('datasiswa', function (Blueprint $table) {
+        Schema::create('absensi', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nis', 8)->unique();
+            $table->string('namasiswa', 128)->references('id')->on('datasiswa')->onDelete('cascade');;
+            $table->string('jurusan');
+            $table->enum('status' , ['Hadir' , ['Izin', 'Sakit']])->default('Hadir');
+            $table->longText('keterangan');
             $table->timestamps();
         });
     }
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('datasiswa');
+        Schema::dropIfExists('absensi');
     }
 };

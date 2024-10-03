@@ -28,41 +28,49 @@
           <span class="align-middle">Absen Prakerin</span>
         </a>
 
+				
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						Pages
+						Pages Admin
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="{{route('admin.dashboard')}}">
-              <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
-            </a>
+              				<i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
+            			</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="{{route('admin.datasiswa.index')}}">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Data Siswa</span>
-            </a>
+              				<i class="align-middle" data-feather="user"></i> <span class="align-middle">Data Siswa</span>
+            			</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="{{route('admin.dataabsen.index')}}">
-              <i class="align-middle" data-feather="user-check"></i> <span class="align-middle">Data Absen</span>
-            </a>
+              				<i class="align-middle" data-feather="user-check"></i> <span class="align-middle">Data Absen</span>
+            			</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="{{route('admin.datajurnal.index')}}">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Data Jurnal</span>
-            </a>
-					</li>	
-					
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="{{route('admin.diagramchart.index')}}">
-              <i class="align-middle" data-feather="bar-chart"></i> <span class="align-middle">Diagram Chart Absen</span>
-            </a>
+              				<i class="align-middle" data-feather="book"></i> <span class="align-middle">Data Jurnal</span>
+            			</a>
 					</li>
 					
+					<ul class="sidebar-nav">
+						<li class="sidebar-header">
+							Pages Siswa
+						</li>
+
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="{{route('admin.absensi.index')}}">
+								  <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Absensi</span>
+							</a>
+						</li>
+
+
+
 			</div>
 		</nav>
 
@@ -79,7 +87,12 @@
                 				<img src="{{ asset('img/avatars/gambarprofil.jpg')}}" class="avatar img-fluid rounded me-1"/> <span class="text-dark">Admin</span>
               				</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="log-out"></i>Log out</a>
+								<a class="dropdown-item" href="#" onclick="$('#form-logout').submit()">
+									<i class="align-middle me-1" data-feather="log-out"></i>Log out</a>
+									
+								<form id="form-logout" action="{{route('logout')}}" method="POST">
+									@csrf
+								</form>
 							</div>
 						</li>
 					</ul>

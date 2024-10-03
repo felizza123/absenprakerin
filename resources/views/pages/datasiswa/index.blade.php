@@ -23,7 +23,12 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>NIS</th>
                             <th>Nama</th>
+                            <th>Jurusan</th>
+                            <th>Mulai Prakerin</th>
+                            <th>Akhir Prakerin</th>
+                            <th>Foto</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -31,7 +36,15 @@
                         @foreach($datasiswa as $item)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
+                                <td>{{$item->nis}}</td>
                                 <td>{{$item->nama}}</td>
+                                <td>{{$item->jurusan}}</td>
+                                <td>{{$item->mulaiprakerin}}</td>
+                                <td>{{$item->akhirprakerin}}</td>
+                                
+                                <td>
+                                    <img src="{{ asset('/storage/image/' . $item->foto) }}" class="img-thumbnail" alt="" width="100">
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.datasiswa.show', $item->id) }}"
                                         class="btn btn-outline-secondary btn-sm me-1">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Datasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DatasiswaController extends Controller
 {
@@ -29,13 +30,32 @@ class DatasiswaController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
+            'nis' => 'required',
             'nama' => 'required',
+            'jurusan' => 'required',
+            'mulaiprakerin' => 'required',
+            'akhirprakerin' => 'required',
+            'foto' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
-        $datasiswa = new Datasiswa();
-        $datasiswa->nama = $request->nama;
-        $datasiswa->save();
+
+        $datasiswa = Datasiswa::find();
+
+        if ($request->has('foto')){
+        $imageName = time() . '.' . $request->foto->extension(); //rename file
+        $request->foto->storeAs('image', $imageName, 'public');
+        }else{
+        $imageName = $datasiswa->foto;
+    }
+      $datasiswa->nis = $request->nis;
+      $datasiswa->nama = $request->nama;
+      $datasiswa->jurusan = $request->jurusan;
+      $datasiswa->mulaiprakerin = $request->mulaiprakerin;
+      $datasiswa->akhirprakerin = $request->akhirprakerin;
+      $datasiswa->foto = $imageName;
+      $datasiswa->save();
 
         return redirect('admin/datasiswa');
     }
@@ -64,12 +84,27 @@ class DatasiswaController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
+            'nis' => 'required',
             'nama' => 'required',
+            'jurusan' => 'required',
+            'mulaiprakerin' => 'required',
+            'akhirprakerin' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+
         ]);
-            $datasiswas = Datasiswa::find($id);
-            $datasiswas->nama = $request->nama;
-            $datasiswas->save();
-            return redirect('admin/datasiswa');
+        $imageName = time() . '.' . $request->foto->extension(); //rename file
+        $request->foto->storeAs('image', $imageName, 'public');
+
+        $datasiswas = Datasiswa::create([
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'jurusan' => $request->jurusan,
+            'mulaiprakerin' => $request->mulaiprakerin,
+            'akhirprakerin' => $request->akhirprakerin,
+            'foto' => $imageName,
+        ]);
+
+        return redirect('admin/datasiswa');
     
 
     }
