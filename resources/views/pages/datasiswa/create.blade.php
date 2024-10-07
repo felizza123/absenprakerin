@@ -5,7 +5,7 @@
         <div class="page-title mb-3">
             <h3>
                 <span class="bi bi-building"></span>
-                Create New - datasiswas
+                Create New - Data Siswa
             </h3>
         </div>
 
@@ -70,7 +70,28 @@
                             @error('foto')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
                             @enderror
+
+                            <img id="fotoPreview" src="" alt="Preview" class="img-thumbnail" style="display: none; max-width: 100%; height: auto;" width="300" />
+                            <script>
+                                document.getElementById('foto').addEventListener('change', function(event) {
+                                    const file = event.target.files[0];
+                                    const preview = document.getElementById('fotoPreview');
+                            
+                                    if (file) {
+                                        const reader = new FileReader();
+                                        reader.onload = function(e) {
+                                            preview.src = e.target.result; // Set src dengan hasil baca FileReader
+                                            preview.style.display = 'block'; // Tampilkan gambar
+                                        }
+                                        reader.readAsDataURL(file); // Membaca file sebagai URL Data
+                                    } else {
+                                        preview.src = ''; // Reset jika tidak ada file yang dipilih
+                                        preview.style.display = 'none'; // Sembunyikan gambar
+                                    }
+                                });
+                            </script>        
                         </div>
+                    </div>
             </div>
         </section>
 

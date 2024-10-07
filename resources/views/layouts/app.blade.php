@@ -48,13 +48,13 @@
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="{{route('admin.dataabsen.index')}}">
-              				<i class="align-middle" data-feather="user-check"></i> <span class="align-middle">Data Absen</span>
+              				<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Data Absen</span>
             			</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="{{route('admin.datajurnal.index')}}">
-              				<i class="align-middle" data-feather="book"></i> <span class="align-middle">Data Jurnal</span>
+              				<i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Data Jurnal</span>
             			</a>
 					</li>
 					
@@ -66,6 +66,12 @@
 						<li class="sidebar-item">
 							<a class="sidebar-link" href="{{route('admin.absensi.index')}}">
 								  <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Absensi</span>
+							</a>
+						</li>
+
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="{{route('admin.absensi.index')}}">
+								  <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Jurnal</span>
 							</a>
 						</li>
 

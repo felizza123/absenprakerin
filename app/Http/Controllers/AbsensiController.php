@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Datasiswa;
 use App\Models\Absensi;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $absensi = Absensi::all();
+        $absensi = Absensi::orderBy('created_at', 'DESC')->get();
         return view('pages.absensi.index', compact('absensi'));
     }
 
@@ -21,7 +22,8 @@ class AbsensiController extends Controller
      */
     public function create()
     {
-        return view('pages.absensi.create');
+        $datasiswa = Datasiswa::all();
+        return view('pages.absensi.create', compact('datasiswa'));
     }
 
     /**
@@ -34,7 +36,6 @@ class AbsensiController extends Controller
             'nama' => 'required|max:255',
             'jurusan' => 'required',
             'status' => 'required',
-            'keterangan' => 'required',
 
         ],[
             'nis.required' => 'NIS harus diisi',
@@ -42,10 +43,9 @@ class AbsensiController extends Controller
             'nama.required' => 'Nama harus diisi',
             'jurusan.required' => 'Jurusan harus diisi',
             'status.required' => 'status harus diisi',
-            'keterangan.required' => 'keterangan harus diisi',
         ]);
         $absensi = Absensi::create($request->all());
-        return redirect()->route('absensi.index');
+        return redirect()->route('absensi.index', 'dataabsen.index')->with('success', 'Kamu telah absen.');
 
     }
 
@@ -63,8 +63,9 @@ class AbsensiController extends Controller
      */
     public function edit(string $id)
     {
+        $datasiswa = Datasiswa::all();
         $absensi = Absensi::find($id);
-        return view('pages.absensi.edit', compact('absensi'));
+        return view('pages.absensi.edit', compact('absensi', 'datasiswa'));
     }
 
     /**

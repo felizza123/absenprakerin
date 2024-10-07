@@ -13,7 +13,7 @@ class DatasiswaController extends Controller
      */
     public function index()
     {
-        $datasiswa = Datasiswa::all();
+        $datasiswa = Datasiswa::orderBy('created_at', 'DESC')->get();
         return view('pages.datasiswa.index', compact('datasiswa'));
     }
 
@@ -30,34 +30,36 @@ class DatasiswaController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-            'nis' => 'required',
+            'nis' => 'required|unique:datasiswa,nis|max:8',
             'nama' => 'required',
             'jurusan' => 'required',
             'mulaiprakerin' => 'required',
             'akhirprakerin' => 'required',
             'foto' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
-
+        ],[
+            'nis.required' => 'NIS sudah terdaftar, silahkan daftarkan NIS yang lain',
+            'nama.required' => 'Nama harus diisi',
+            'jurusan.required' => 'Jurusan harus diisi',
+            'mulaiprakerin.required' => 'Tanggal Mulaiprakerin harus diisi',
+            'akhirprakerin.required' => 'Tanggal Akhirprakerin harus diisi',
+            'foto.required' => 'Foto harus diisi',
         ]);
 
-        $datasiswa = Datasiswa::find();
-
-        if ($request->has('foto')){
-        $imageName = time() . '.' . $request->foto->extension(); //rename file
+       $imageName = time() . '.' . $request->foto->extension(); //rename file
         $request->foto->storeAs('image', $imageName, 'public');
-        }else{
-        $imageName = $datasiswa->foto;
-    }
-      $datasiswa->nis = $request->nis;
-      $datasiswa->nama = $request->nama;
-      $datasiswa->jurusan = $request->jurusan;
-      $datasiswa->mulaiprakerin = $request->mulaiprakerin;
-      $datasiswa->akhirprakerin = $request->akhirprakerin;
-      $datasiswa->foto = $imageName;
-      $datasiswa->save();
+
+        $datasiswas = Datasiswa::create([
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'jurusan' => $request->jurusan,
+            'mulaiprakerin' => $request->mulaiprakerin,
+            'akhirprakerin' => $request->akhirprakerin,
+            'foto' => $imageName,
+        ]);
 
         return redirect('admin/datasiswa');
+    
     }
 
     /**
@@ -84,29 +86,38 @@ class DatasiswaController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nis' => 'required',
+            'nis' => 'required|unique:datasiswa,nis|max:8',
             'nama' => 'required',
             'jurusan' => 'required',
             'mulaiprakerin' => 'required',
             'akhirprakerin' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-
-        ]);
-        $imageName = time() . '.' . $request->foto->extension(); //rename file
-        $request->foto->storeAs('image', $imageName, 'public');
-
-        $datasiswas = Datasiswa::create([
-            'nis' => $request->nis,
-            'nama' => $request->nama,
-            'jurusan' => $request->jurusan,
-            'mulaiprakerin' => $request->mulaiprakerin,
-            'akhirprakerin' => $request->akhirprakerin,
-            'foto' => $imageName,
+        ],[
+            'nis.required' => 'NIS sudah terdaftar, silahkan daftarkan NIS yang lain',
+            'nama.required' => 'Nama harus diisi',
+            'jurusan.required' => 'Jurusan harus diisi',
+            'mulaiprakerin.required' => 'Tanggal Mulaiprakerin harus diisi',
+            'akhirprakerin.required' => 'Tanggal Akhirprakerin harus diisi',
+            'foto.required' => 'Foto harus diisi',
         ]);
 
+        $datasiswa = Datasiswa::find($id);
+        if ($request->has('foto')){
+            $imageName = time() . '.' . $request->foto->extension(); //rename file
+            $request->foto->storeAs('image', $imageName, 'public');
+        }else{
+            $imageName = $datasiswa->foto;
+        }
+
+            $datasiswa->nis = $request->nis;
+            $datasiswa->nama = $request->nama;
+            $datasiswa->jurusan = $request->jurusan;
+            $datasiswa->mulaiprakerin = $request->mulaiprakerin;
+            $datasiswa->akhirprakerin = $request->akhirprakerin;
+            $datasiswa->foto = $imageName;
+            $datasiswa->save();
+      
         return redirect('admin/datasiswa');
-    
-
     }
 
     /**

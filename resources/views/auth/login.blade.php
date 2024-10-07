@@ -18,6 +18,21 @@
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<style>
+	    body {
+	        background-image: url('{{ asset('img/avatars/background-leaf.png') }}'); /* Ganti dengan path gambar latar belakang */
+	        background-size: cover;
+	        background-repeat: no-repeat;
+	        background-position: center center;
+	        height: 100vh; /* Set tinggi halaman penuh */
+	    }
+
+	    .card {
+	        background-color: rgba(255, 255, 255, 0.8); /* Transparansi untuk card */
+	    }
+	</style>
+
 </head>
 
 <body>
@@ -29,18 +44,15 @@
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
 
-						<div class="text-center mt-4">
-							<h1 class="h2">Selamat Datang di </h1>
-							<p class="lead">
-								Absen Prakerin
-							</p>
+						<div class="text-center mt-4 ">
+							<h1 class="h3">ABSEN PRAKERIN </h1>
 						</div>
 
-						<div class="card">
-							<div class="card-body">
 								<div class="m-sm-4">
 									<div class="text-center">
 										<img src="{{asset('img/avatars/gambarprofil.jpg')}}" alt="Siswa Prakerin" class="img-fluid rounded-circle" width="132" height="132" />
+										<p class="lead mb-0 mt-3">Selamat datang</p>
+										<p>Silahkan login untuk melanjutkan</p>
 									</div>
 									<form>
 										<div class="mb-3">

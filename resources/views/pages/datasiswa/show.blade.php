@@ -21,7 +21,7 @@
                                 <td>{{$datasiswa->nis}}</td>
                             </tr>
                             <tr>
-                                <th>Datasiswa Nama</th>
+                                <th>Nama</th>
                                 <td>{{$datasiswa->nama}}</td>
                             </tr>
                             <tr>

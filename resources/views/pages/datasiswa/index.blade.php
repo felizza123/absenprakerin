@@ -11,9 +11,9 @@
 
     
     <a href="{{ route('admin.datasiswa.create') }}"
-    class="btn btn-primary mb-3">
-    <span class="bi bi-plus-circle"></span>
-        Created New
+        class="btn btn-primary mb-4">
+            <i class="align-middle" data-feather="plus-circle" ></i>
+            Created New
     </a>
 
     <section class="section">
@@ -23,9 +23,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>NIS</th>
                             <th>Nama</th>
-                            <th>Jurusan</th>
                             <th>Mulai Prakerin</th>
                             <th>Akhir Prakerin</th>
                             <th>Foto</th>
@@ -33,12 +31,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if(count($datasiswa) == 0)
+                            <tr>
+                                <td colspan="6" class="text-center">Tidak ada data</td>
+                            </tr>
+                        @else
                         @foreach($datasiswa as $item)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$item->nis}}</td>
                                 <td>{{$item->nama}}</td>
-                                <td>{{$item->jurusan}}</td>
                                 <td>{{$item->mulaiprakerin}}</td>
                                 <td>{{$item->akhirprakerin}}</td>
                                 
@@ -48,22 +49,23 @@
                                 <td>
                                     <a href="{{ route('admin.datasiswa.show', $item->id) }}"
                                         class="btn btn-outline-secondary btn-sm me-1">
-                                        <span class="bi bi-eye"></span>
+                                        <i class="align-middle" data-feather="eye"></i>
                                         Show
                                     </a>
                                     <a href="{{ route('admin.datasiswa.edit', $item->id) }}"
-                                        class="btn btn-secondary btn-sm me-1">
-                                        <span class="bi bi-pencil"></span>
+                                        class="btn btn-primary btn-sm me-1">
+                                        <i class="align-middle" data-feather="edit"></i>
                                         Edit
                                     </a>
                                     <a href="#" 
                                         class="btn btn-danger btn-sm me-1" onclick="handleDestroy(`{{ route('admin.datasiswa.destroy', $item->id) }}`)">
-                                        <span class="bi bi-trash"></span>
+                                        <i class="align-middle" data-feather="trash"></i>
                                         Delete
                                     </a>
                                 </td>
                             </tr>
                         @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -78,34 +80,24 @@
 
 @endsection
 
-@push('styles')
-<link rel="stylesheet" href="{{asset('/vendors/simple-datatables/style.css')}}">
-@endpush
-
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="{{asset('/vendors/simple-datatables/simple-datatables.js')}}"></script>
-    <script>
-        // Simple Datatable
-        let datatable = document.querySelector('#datatable');
-        new simpleDatatables.DataTable(datatable);
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<script type="text/javascript">
-    function handleDestroy(url) {
-        swal({
-            title: "Apakah anda yakin?",
-            text: "Setelah dihapus, Anda tidak akan dapat mengembalikan ini!",
-            icon: "warning",
-            buttons: ['Batal', 'Ya, Hapus!'],
-            dangerMode: true,
-        }).then((confirmed) => {
-            if (confirmed) {
-                $('#form-delete').attr('action', url);
-                $('#form-delete').submit();
-            }
-        });
-    }
-</script>
+    <script type="text/javascript">
+        function handleDestroy(url) {
+            swal({
+                title: "Apakah anda yakin?",
+                text: "Setelah dihapus, Anda tidak akan dapat mengembalikan ini!",
+                icon: "warning",
+                buttons: ['Batal', 'Ya, Hapus!'],
+                dangerMode: true,
+            }).then((confirmed) => {
+                if (confirmed) {
+                    $('#form-delete').attr('action', url);
+                    $('#form-delete').submit();
+                }
+            });
+        }
+    </script>
 @endpush

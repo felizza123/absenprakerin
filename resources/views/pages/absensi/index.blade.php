@@ -11,8 +11,8 @@
 
         <a href="{{ route('admin.absensi.create') }}"
         class="btn btn-primary mb-3 btn-lg">
-        <span class="bi bi-plus-circle"></span>
-            Absen
+        <i class="align-middle" data-feather="plus-circle" ></i>
+        Absen
         </a>
 
         <section class="section">
@@ -22,9 +22,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>NIS</th>
                                 <th>Nama Siswa</th>
-                                <th>Jurusan</th>
                                 <th>Status</th>
                                 <th>Keterangan</th>
                                 <th>Actions</th>
@@ -34,9 +32,7 @@
                             @foreach($absensi as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->nis}}</td>
                                     <td>{{$item->namasiswa}}</td>
-                                    <td>{{$item->jurusan}}</td>
                                     <td>{{$item->status}}</td>
                                     <td>{{$item->keterangan}}</td>
                                     <td>
@@ -70,19 +66,6 @@
     </form>
     
 @endsection
-
-@push('styles')
-    <link rel="stylesheet" href="{{asset('/vendors/simple-datatables/style.css')}}">
-@endpush
-
-@push('scripts')
-    <script src="{{asset('/vendors/simple-datatables/simple-datatables.js')}}"></script>
-        <script>
-            // Simple Datatable
-            let datatable = document.querySelector('#datatable');
-            new simpleDatatables.DataTable(datatable);
-    </script>
-@endpush
 
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>

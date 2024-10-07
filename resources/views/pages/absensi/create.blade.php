@@ -3,77 +3,124 @@
 @section('content')
     <div class="page-heading">
         <div class="page-title mb-3">
-            <h3>
-                <span class="bi bi-building"></span>
-                Absensi
+            <h3 style="text-align: center;">
+                <span class="bi bi-building bold"></span>
+                <strong>Absensi</strong>
             </h3>
         </div>
 
-        <a href="{{route('admin.absensi.index')}}" class="btn m-3 btn-primary">Kembali</a>
+        <section class="section">  
+                        <div class="container my-4">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10">
+                                    <div class="card shadow">
+                                        <div class="card-header">
+                                            FORM ABSENSI
+                                        </div>
+                                        <div class="card-header">
+                                            Silahkan isi form dibawah ini untuk absen :
+                                        </div>
+                                        <div class="card-body">
+                    
+                                            @if(Session::has('success'))
+                                            <div class="alert alert-success">
+                                                {{ Session::get('success') }}
+                                            </div>  
+                                            @endif  
+                    
+                                            <form action="{{ route('admin.absensi.store') }}" method="POST">
+                                                @csrf
+                    
+                                                <form action="{{ route('admin.absensi.store') }}" method="POST">
+                                                    @csrf
+                                                
+                                                    <form action="{{ route('admin.absensi.store') }}" method="POST">
+                                                        @csrf
+                                                    
+                                                        <div class="row mb-3"> <!-- Row untuk Nama Siswa dan NIS -->
+                                                            <div class="col-md-6"> <!-- Kolom untuk Nama Siswa -->
+                                                                <div class="form-group mb-2">
+                                                                    <label for="namasiswa">Nama Siswa</label>
+                                                                    <select name="namasiswa" class="form-select @error('namasiswa') is-invalid @enderror">
+                                                                        @foreach($datasiswa as $item)
+                                                                            <option value="{{ $item->id }}" @if(old('namasiswa') == $item->id) selected @endif>
+                                                                                {{ $item->namasiswa }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                    
+                                                                    @error('namasiswa')
+                                                                        <div class="invalid-feedback d-block">
+                                                                            {{ $message }}
+                                                                        </div>                   
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                    
+                                                            <div class="col-md-6"> <!-- Kolom untuk NIS -->
+                                                                <div class="form-group mb-2">
+                                                                    <label for="nis">NIS <span class="text-danger">*</span></label>
+                                                                    <input type="number" name="nis" id="nis" value="{{ old('nis') }}" class="form-control @error('nis') is-invalid @enderror" />
+                                                                    
+                                                                    @error('nis')
+                                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                
+                    
+                                                <div class="form-group mb-2">
+                                                    <label for="jurusan">Jurusan <span class="text-danger">*</span></label>
+                                                    <input type="text" name="jurusan" id="jurusan" value="{{old('jurusan')}}" class="form-control @error('jurusan') is-invalid @enderror" />
+                        
+                                                    @error('jurusan')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
 
-        <section class="section">
-            <div class="card">
-                <div class="card-body">
-                    <form action="{{route('admin.absensi.store')}}" method="POST">
-                        @csrf 
+                                                <div class="form-group mb-2">
+                                                    <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
+                                                
+                                                <div class="form-check">
+                                                    <input type="radio" name="status" id="Hadir" value="Hadir" class="form-check-input" />
+                                                    <label for="Hadir" class="form-check-label">Hadir</label>
+                                                </div>
+                                                
+                                                <div class="form-check">
+                                                    <input type="radio" name="status" id="Izin" value="Izin" class="form-check-input" />
+                                                    <label for="Izin" class="form-check-label">Izin</label>
+                                                </div>
 
-                        <div class="form-group mb-2">
-                            <label for="nis">Nis<span class="text-danger">*</span></label>
-                            <input type="number" name="nis" id="nis" class="form-control @error('nis') is-invalid @enderror" value="{{$absensi->nis}}">
+                                                <div class="form-check">
+                                                    <input type="radio" name="status" id="Sakit" value="Sakit" class="form-check-input" />
+                                                    <label for="Sakit" class="form-check-label">Sakit</label>
+                                                </div>
+                    
+                                                <div class="form group mb-3">
+                                                    <label for="keterangan">Keterangan :</label>
+                                                    <textarea name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror">{{ old('keterangan')}}</textarea>
+                                                        
+                                                    @error('keterangan')
+                                                        <div class="invalid-feedback d-block">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
 
-                            @error('nis')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                                                <button type="submit" class="btn btn-primary mb-2">
+                                                    Submit <span class="bi bi-send"></span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="form-group mb-2">
-                            <label for="namasiswa" class="form-label">Nama Siswa</label>
-                            <select name="namasiswa" id="namasiswa" class="form-select">
-                                <option>Pilih Siswa</option>
-                                @foreach($absensi as $item)
-                                <option value="{{$item->id}}">{{ $item->nama }}</option> 
-                                @endforeach
-                            </select>           
-                         </div>
-
-                        <div class="form-group mb-2">
-                            <label for="jurusan">Jurusan<span class="text-danger">*</span></label>
-                            <input type="text" name="jurusan" id="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{$absensi->jurusan}}">
-
-                            @error('jurusan')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="status">Status</label>
-                            <select name="status" class="form-select @error ('status') is-invalid @enderror" >
-
-                                @foreach($status as $item)
-                                    <option value="{{ $item->id }}" @if(old('status') == $item->id) selected @endif>
-                                        {{ $item->status }}
-                                    </option>
-                                @endforeach
-                            </select>
-
-                            @error('institution_id')
-                                <div class="invalid-feedback d-block">
-                                    {{ $message }}
-                                </div>                   
-                            @enderror
-                        </div>
-
-                        <div class="form-group mb-2">
-                            <label for="keterangan" class="form-label">Keterangan</label>
-                            <textarea name="keterangan" id="keterangan" class="form-control">{{$absensi->keterangan}}</textarea>
-                        </div>
-            
-
             </div>
         </section>
+        <a href="{{route('admin.absensi.index')}}" class="btn m-3 btn-secondary">Kembali</a>
 
-        <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="{{route('admin.absensi.index')}}" class="btn btn-secondary">Batal</a>
-    </form>
     </div>
 @endsection
