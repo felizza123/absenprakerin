@@ -24,27 +24,30 @@
                             </tr>
                             <tr>
                                 <th>Nama Siswa</th>
-                                <td>{{$absensi->namasiswa}}</td>
-                            </tr>
+                                <td>{{ $absensi->datasiswa ? $absensi->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                            </tr>
                             <tr>
                                 <th>Jurusan</th>
                                 <td>{{$absensi->jurusan}}</td>
                             </tr>
                             <tr>
+                                <th>Hari Tanggal</th>
+                                <td>{{$absensi->haritanggal}}</td>
+                            </tr>
+                            <tr>
                                 <th>Status</th>
-                                <td>{{$absensi->status}}</td>
+                                <td>
+                                    @if($absensi->status == "Hadir")
+                                    <span>Hadir</span>
+                                @elseif($absensi->status == "Izin")
+                                    <span>Izin</span>
+                                @elseif($absensi->status == "Sakit")
+                                    <span>Sakit</span>
+                                @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>Keterangan</th>
                                 <td>{{$absensi->keterangan}}</td>
-                            </tr>
-                            <tr>
-                                <th>Created At</th>
-                                <td>{{$absensi->created_at}}</td>
-                            </tr>
-                            <tr>
-                                <th>Updated At</th>
-                                <td>{{$absensi->updated_at}}</td>
                             </tr>
                         </table>
                     </div>

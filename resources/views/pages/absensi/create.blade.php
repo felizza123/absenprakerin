@@ -27,58 +27,73 @@
                                                 {{ Session::get('success') }}
                                             </div>  
                                             @endif  
-                    
-                                            <form action="{{ route('admin.absensi.store') }}" method="POST">
-                                                @csrf
-                    
-                                                <form action="{{ route('admin.absensi.store') }}" method="POST">
-                                                    @csrf
-                                                
+                                             
                                                     <form action="{{ route('admin.absensi.store') }}" method="POST">
                                                         @csrf
                                                     
                                                         <div class="row mb-3"> <!-- Row untuk Nama Siswa dan NIS -->
                                                             <div class="col-md-6"> <!-- Kolom untuk Nama Siswa -->
                                                                 <div class="form-group mb-2">
-                                                                    <label for="namasiswa">Nama Siswa</label>
-                                                                    <select name="namasiswa" class="form-select @error('namasiswa') is-invalid @enderror">
+                                                                    <label for="namasiswa_id" class="form-label">Nama Siswa <span class="text-danger">*</span></label>
+                                                                    <select name="namasiswa_id" class="form-select @error('namasiswa_id') is-invalid @enderror">
+                                                                        <option value="">Pilih Nama Siswa</option>
                                                                         @foreach($datasiswa as $item)
-                                                                            <option value="{{ $item->id }}" @if(old('namasiswa') == $item->id) selected @endif>
-                                                                                {{ $item->namasiswa }}
+                                                                            <option value="{{ $item->id }}" @if(old('namasiswa_id') == $item->id) selected @endif>
+                                                                                {{ $item->nama }}
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
-                                                    
-                                                                    @error('namasiswa')
+                                                        
+                                                                    @error('namasiswa_id')
                                                                         <div class="invalid-feedback d-block">
                                                                             {{ $message }}
-                                                                        </div>                   
+                                                                        </div>
                                                                     @enderror
                                                                 </div>
                                                             </div>
-                                                    
+                                                        
                                                             <div class="col-md-6"> <!-- Kolom untuk NIS -->
                                                                 <div class="form-group mb-2">
-                                                                    <label for="nis">NIS <span class="text-danger">*</span></label>
+                                                                    <label for="nis" class="form-label">NIS <span class="text-danger">*</span></label>
                                                                     <input type="number" name="nis" id="nis" value="{{ old('nis') }}" class="form-control @error('nis') is-invalid @enderror" />
-                                                                    
+                                                        
                                                                     @error('nis')
                                                                         <div class="invalid-feedback">{{ $message }}</div>
                                                                     @enderror
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        
                                                     
-                                                
-                    
-                                                <div class="form-group mb-2">
-                                                    <label for="jurusan">Jurusan <span class="text-danger">*</span></label>
-                                                    <input type="text" name="jurusan" id="jurusan" value="{{old('jurusan')}}" class="form-control @error('jurusan') is-invalid @enderror" />
-                        
-                                                    @error('jurusan')
-                                                        <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
+                                                        <div class="row mb-3"> <!-- Row untuk Hari Tanggal dan Jurusan -->
+                                                            <div class="col-md-6"> <!-- Kolom untuk Hari Tanggal -->
+                                                                <div class="form-group mb-2">
+                                                                    <label for="haritanggal" class="form-label">Hari Tanggal <span class="text-danger">*</span></label>
+                                                                    <input type="date" name="haritanggal" id="haritanggal" value="{{ old('haritanggal') }}" class="form-control @error('haritanggal') is-invalid @enderror" />
+                                                                    
+                                                                    @error('haritanggal')
+                                                                        <div class="invalid-feedback d-block">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        
+                                                            <div class="col-md-6"> <!-- Kolom untuk Jurusan -->
+                                                                <div class="form-group mb-2">
+                                                                    <label for="jurusan" class="form-label">Jurusan <span class="text-danger">*</span></label>
+                                                                    <input type="text" name="jurusan" id="jurusan" value="{{ old('jurusan') }}" class="form-control @error('jurusan') is-invalid @enderror" />
+                                                                    
+                                                                    @error('jurusan')
+                                                                        <div class="invalid-feedback d-block">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        
 
                                                 <div class="form-group mb-2">
                                                     <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
@@ -102,16 +117,14 @@
                                                     <label for="keterangan">Keterangan :</label>
                                                     <textarea name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror">{{ old('keterangan')}}</textarea>
                                                         
-                                                    @error('keterangan')
-                                                        <div class="invalid-feedback d-block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
+                                                    
                                                 </div>
 
                                                 <button type="submit" class="btn btn-primary mb-2">
-                                                    Submit <span class="bi bi-send"></span>
+                                                    Kirim <span class="bi bi-send"></span>
                                                 </button>
+                                                <a href="{{route('admin.absensi.index')}}" class="btn mb-2 btn-secondary">Kembali</a>
+
                                             </form>
                                         </div>
                                     </div>
@@ -120,7 +133,6 @@
                         </div>
             </div>
         </section>
-        <a href="{{route('admin.absensi.index')}}" class="btn m-3 btn-secondary">Kembali</a>
 
     </div>
 @endsection

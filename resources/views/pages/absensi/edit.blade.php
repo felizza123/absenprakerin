@@ -17,7 +17,7 @@
                         @method('PUT')
 
                         <div class="form-group mb-2">
-                            <label for="nis">Nis<span class="text-danger">*</span></label>
+                            <label for="nis">NIS<span class="text-danger">*</span></label>
                             <input type="number" name="nis" id="nis" class="form-control @error('nis') is-invalid @enderror" value="{{$absensi->nis}}">
 
                             @error('nis')
@@ -26,12 +26,13 @@
                         </div>
 
                         <div class="form-group mb-2">
-                            <label for="namasiswa" class="form-label">Nama Siswa</label>
-                            <select name="namasiswa" id="namasiswa" class="form-select">
+                            <label for="namasiswa_id" class="form-label">Nama Siswa</label>
+                            <select name="namasiswa_id" id="namasiswa_id" class="form-select">
                                 <option>Pilih Siswa</option>
                                 @foreach($absensi as $item)
-                                <option value="{{$item->id}}">{{ $item->nama }}</option> 
-                                @endforeach
+                                <option value="{{ $item->id }}" @if(old('namasiswa_id') == $item->nama) selected @endif>
+                                    {{ $item->nama }} </option>                               
+                                    @endforeach
                             </select>           
                          </div>
 
@@ -40,6 +41,15 @@
                             <input type="text" name="jurusan" id="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{$absensi->jurusan}}">
 
                             @error('jurusan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label for="haritanggal">Hari Tanggal <span class="text-danger">*</span></label>
+                            <input type="date" name="jurusan" id="haritanggal" value="{{old('haritanggal')}}" class="form-control @error('haritanggal') is-invalid @enderror" />
+
+                            @error('haritanggal')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

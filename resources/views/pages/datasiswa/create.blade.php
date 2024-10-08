@@ -9,8 +9,6 @@
             </h3>
         </div>
 
-        <a href="{{route('admin.datasiswa.index')}}" class="btn m-3 btn-primary">Kembali</a>
-
         <section class="section">
             <div class="card">
                 <div class="card-body">
@@ -26,40 +24,52 @@
                             @enderror
                         </div>
 
-                        <div class="form-group mb-2">
-                            <label for="name">Nama <span class="text-danger">*</span></label>
-                            <input type="text" name="nama" id="nama" value="{{old('nama')}}" class="form-control @error('nama') is-invalid @enderror" />
+                        <div class="row mb-3"> <!-- Row for Nama and Jurusan -->
+                            <div class="col-md-6"> <!-- Column for Nama -->
+                                <div class="form-group mb-2">
+                                    <label for="nama">Nama <span class="text-danger">*</span></label>
+                                    <input type="text" name="nama" id="nama" value="{{ old('nama') }}" class="form-control @error('nama') is-invalid @enderror" />
 
-                            @error('nama')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                                    @error('nama')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-6"> <!-- Column for Jurusan -->
+                                <div class="form-group mb-2">
+                                    <label for="jurusan">Jurusan <span class="text-danger">*</span></label>
+                                    <input type="text" name="jurusan" id="jurusan" value="{{ old('jurusan') }}" class="form-control @error('jurusan') is-invalid @enderror" />
+
+                                    @error('jurusan')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group mb-2">
-                            <label for="jurusan">Jurusan <span class="text-danger">*</span></label>
-                            <input type="text" name="jurusan" id="jurusan" value="{{old('jurusan')}}" class="form-control @error('jurusan') is-invalid @enderror" />
+                        <div class="row mb-3"> <!-- Row for Mulai Prakerin and Akhir Prakerin -->
+                            <div class="col-md-6"> <!-- Column for Mulai Prakerin -->
+                                <div class="form-group mb-2">
+                                    <label for="mulaiprakerin">Mulai Prakerin <span class="text-danger">*</span></label>
+                                    <input type="date" name="mulaiprakerin" id="mulaiprakerin" value="{{ old('mulaiprakerin') }}" class="form-control @error('mulaiprakerin') is-invalid @enderror" />
 
-                            @error('jurusan')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                                    @error('mulaiprakerin')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
 
-                        <div class="form-group mb-2">
-                            <label for="mulaiprakerin">Mulai Prakerin <span class="text-danger">*</span></label>
-                            <input type="date" name="mulaiprakerin" id="mulaiprakerin" value="{{old('mulaiprakerin')}}"  class="form-control @error('mulaiprakerin') is-invalid @enderror" />
+                            <div class="col-md-6"> <!-- Column for Akhir Prakerin -->
+                                <div class="form-group mb-2">
+                                    <label for="akhirprakerin">Akhir Prakerin <span class="text-danger">*</span></label>
+                                    <input type="date" name="akhirprakerin" id="akhirprakerin" value="{{ old('akhirprakerin') }}" class="form-control @error('akhirprakerin') is-invalid @enderror" />
 
-                            @error('mulaiprakerin')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group mb-2">
-                            <label for="akhirprakerin">Akhir Prakerin <span class="text-danger">*</span></label>
-                            <input type="date" name="akhirprakerin" id="akhirprakerin" value="{{old('akhirprakerin')}}"  class="form-control @error('akhirprakerin') is-invalid @enderror" />
-
-                            @error('akhirprakerin')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                                    @error('akhirprakerin')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
 

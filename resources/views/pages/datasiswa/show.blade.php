@@ -41,14 +41,6 @@
                                 <td>
                                     <img src="{{asset('/storage/image/'.$datasiswa->foto)}}" class="img-thumbnail" alt="" width="200">
                                 </td>
-                            </tr>
-                                <td>Created At</td>
-                                <td>{{Carbon\Carbon::parse($datasiswa->Created_at)->isoFormat('DD MMM Y HH:mm')}}</td>
-                            </tr>
-                            <tr>
-                                <td>Updated At</td>
-                                <td>{{Carbon\Carbon::parse($datasiswa->Updated_at)->isoFormat('DD MMM Y HH:mm')}}</td>
-                            </tr>
                         </table>
                     </div>
                 </div>

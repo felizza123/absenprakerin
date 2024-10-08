@@ -92,13 +92,6 @@ class DatasiswaController extends Controller
             'mulaiprakerin' => 'required',
             'akhirprakerin' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ],[
-            'nis.required' => 'NIS sudah terdaftar, silahkan daftarkan NIS yang lain',
-            'nama.required' => 'Nama harus diisi',
-            'jurusan.required' => 'Jurusan harus diisi',
-            'mulaiprakerin.required' => 'Tanggal Mulaiprakerin harus diisi',
-            'akhirprakerin.required' => 'Tanggal Akhirprakerin harus diisi',
-            'foto.required' => 'Foto harus diisi',
         ]);
 
         $datasiswa = Datasiswa::find($id);

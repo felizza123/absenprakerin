@@ -12,8 +12,12 @@ class AbsensiController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+
     {
-        $absensi = Absensi::orderBy('created_at', 'DESC')->get();
+        $absensi = Absensi::with('datasiswa')
+        ->orderBy('namasiswa_id', 'DESC')
+        ->get();
+
         return view('pages.absensi.index', compact('absensi'));
     }
 
@@ -33,19 +37,22 @@ class AbsensiController extends Controller
     {
         $request->validate([
             'nis' => 'required|unique:absensi,nis|max:8',
-            'nama' => 'required|max:255',
+            'namasiswa_id' => 'required|max:255',
+            'haritanggal' => 'required',
             'jurusan' => 'required',
             'status' => 'required',
 
         ],[
             'nis.required' => 'NIS harus diisi',
             'nis.unique' => 'NIS sudah terdaftar, silahkan daftarkan NIS yang lain',
-            'nama.required' => 'Nama harus diisi',
+            'namasiswa_id.required' => 'Nama harus diisi',
+            'haritanggal.required' => 'Haritanggal harus diisi',
             'jurusan.required' => 'Jurusan harus diisi',
             'status.required' => 'status harus diisi',
         ]);
-        $absensi = Absensi::create($request->all());
-        return redirect()->route('absensi.index', 'dataabsen.index')->with('success', 'Kamu telah absen.');
+
+        Absensi::create($request->only(['nis', 'namasiswa_id', 'haritanggal', 'jurusan' , 'status', 'keterangan']));
+        return redirect()->route('admin.absensi.index', 'dataabsen.index')->with('success', 'Kamu telah absen.');
 
     }
 
@@ -75,14 +82,16 @@ class AbsensiController extends Controller
     {
         $request->validate([
             'nis' => 'required|max:8',
-            'namasiswa' => 'required|max:255',
+            'namasiswa_id' => 'required|max:255',
+            'haritanggal' => 'required',
             'jurusan' => 'required',
             'status' => 'required',
             'keterangan' => 'required',
         ]);
         $absensi = Absensi::find($id);
         $absensi->nis = $request->nis;
-        $absensi->namasiswa = $request->namasiswa;
+        $absensi->namasiswa_id = $request->namasiswa_id;
+        $absensi->haritanggal = $request->haritanggal;
         $absensi->jurusan = $request->jurusan;
         $absensi->status = $request->status;
         $absensi->keterangan = $request->keterangan;

@@ -10,7 +10,7 @@
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="{{ asset('img/icons/icon-48x48.png')}}" />
+	<link rel="shortcut icon" href="{{ asset('img/icons/user.png')}}" />
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
@@ -22,13 +22,11 @@
 
 <body>
 	<div class="wrapper">
-		<nav id="sidebar" class="sidebar js-sidebar">
-			<div class="sidebar-content js-simplebar">
+		<nav id="sidebar" class="sidebar js-sidebar" >
+			<div class="sidebar-content js-simplebar" >
 				<a class="sidebar-brand" href="http://absenprakerin.test/admin">
           <span class="align-middle">Absen Prakerin</span>
         </a>
-
-				
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
 						Pages Admin
@@ -74,17 +72,15 @@
 								  <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Jurnal</span>
 							</a>
 						</li>
-
-
-
+					</ul>
 			</div>
 		</nav>
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+          			<i class="hamburger align-self-center"></i>
+        		</a>
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
