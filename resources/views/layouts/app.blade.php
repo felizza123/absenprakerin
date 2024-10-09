@@ -62,13 +62,19 @@
 						</li>
 
 						<li class="sidebar-item">
-							<a class="sidebar-link" href="{{route('admin.absensi.index')}}">
+							<a class="sidebar-link" href="{{route('admin.form.index')}}">
 								  <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Absensi</span>
 							</a>
 						</li>
 
 						<li class="sidebar-item">
-							<a class="sidebar-link" href="{{route('admin.absensi.index')}}">
+							<a class="sidebar-link" href="{{route('admin.riwayatabsensi.index')}}">
+								  <i class="align-middle" data-feather="clock"></i> <span class="align-middle">Riwayat Absensi</span>
+							</a>
+						</li>
+
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="{{route('admin.jurnal.index')}}">
 								  <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Jurnal</span>
 							</a>
 						</li>

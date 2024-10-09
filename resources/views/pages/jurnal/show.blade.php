@@ -5,7 +5,7 @@
         <div class="page-title mb-3">
             <h3>
                 <span class="bi bi-building"></span>
-                Absensi
+                Jurnal
             </h3>
         </div>
 
@@ -16,45 +16,41 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>No</th>
-                                <td>{{$absensi->id}}</td>
+                                <td>{{$jurnal->id}}</td>
                             </tr>
                             <tr>
                                 <th>NIS</th>
-                                <td>{{$absensi->nis}}</td>
+                                <td>{{$jurnal->nis}}</td>
                             </tr>
                             <tr>
                                 <th>Nama Siswa</th>
-                                <td>{{ $absensi->datasiswa ? $absensi->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                            </tr>
+                                <td>{{ $jurnal->datasiswa ? $jurnal->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                            </tr>
                             <tr>
                                 <th>Jurusan</th>
-                                <td>{{$absensi->jurusan}}</td>
+                                <td>{{$jurnal->jurusan}}</td>
                             </tr>
                             <tr>
                                 <th>Hari Tanggal</th>
-                                <td>{{$absensi->haritanggal}}</td>
+                                <td>{{$jurnal->haritanggal}}</td>
                             </tr>
                             <tr>
-                                <th>Status</th>
-                                <td>
-                                    @if($absensi->status == "Hadir")
-                                    <span>Hadir</span>
-                                @elseif($absensi->status == "Izin")
-                                    <span>Izin</span>
-                                @elseif($absensi->status == "Sakit")
-                                    <span>Sakit</span>
-                                @endif
-                                </td>
+                                <th>Waktu Mulai</th>
+                                <th>{{ \Carbon\Carbon::createFromFormat('H:i:s', $waktumulai)->format('H:i') }} 
+                            </tr>
+                            <tr>
+                                <th>Waktu Selesai</th>
+                                <th>{{ \Carbon\Carbon::createFromFormat('H:i:s', $waktumulai)->format('H:i') }} 
                             </tr>
                             <tr>
                                 <th>Keterangan</th>
-                                <td>{{$absensi->keterangan}}</td>
+                                <td>{{$jurnal->keterangan}}</td>
                             </tr>
                         </table>
                     </div>
                 </div>
         </section>
         <td>
-            <a href="{{route('admin.absensi.index')}}" class="btn btn-primary mb-2">Kembali</a>
+            <a href="{{route('admin.jurnal.index')}}" class="btn btn-primary mb-2">Kembali</a>
         </td>
 
     </div>   

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('datajurnal', function (Blueprint $table) {
+        Schema::create('jurnal', function (Blueprint $table) {
             $table->id();
             $table->string('nis', 8)->unique();
             $table->string('namasiswa_id', 128)->references('id')->on('datasiswa')->onDelete('cascade');;
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('datajurnal');
+        Schema::dropIfExists('jurnal');
     }
 };

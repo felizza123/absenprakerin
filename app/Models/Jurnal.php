@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Absensi extends Model
+class Jurnal extends Model
 {
     use HasFactory;
-    protected $fillable = ['nis','namasiswa_id','jurusan','haritanggal','status','keterangan'];
+    protected $fillable = ['nis','namasiswa_id','jurusan','haritanggal','waktumulai','waktuselesai','jurnal'];
 
     public function datasiswa()
     {

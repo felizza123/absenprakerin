@@ -5,7 +5,7 @@
         <div class="page-title mb-3">
             <h3>
                 <span class="bi bi-people"></span>
-                Data Jurnal
+                Riwayat Absensi
             </h3>
         </div>
 
@@ -16,26 +16,36 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
+                                <th>Nama Siswa</th>
                                 <th>Hari Tanggal</th>
-                                <th>Jurnal</th>
+                                <th>Status</th>
+                                <th>Keterangan</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($datajurnal as $item)
+                            @foreach($riwayatabsensi as $item)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->nama}}</td>
-                                    <td>{{$item->haritanggal}}</td>
-                                    <td>{{$item->jurnal}}</td>
+                                    <td>{{$item->datasiswa->namasiswa}}</td>
+                                    <td>{{$item->jurusan}}</td>
+                                    <td>{{$item->status}}</td>
                                     <td>
-                                        <a href="{{ route('admin.datajurnal.show', $item->id) }}"
+                                        @if($item->status == 'Hadir')
+                                            <span class="badge bg-success">Hadir</span>
+                                        @elseif($item->status == 'Izin')
+                                            <span class="badge bg-danger">Izin</span>
+                                        @else
+                                            <span class="badge bg-warning">Sakit</span>
+                                        @endif
+                                    </td>
+                                    <td>{{$item->keterangan}}</td>
+                                    <td>
+                                        <a href="{{ route('admin.riwayatabsensi.show', $item->id) }}"
                                             class="btn btn-outline-secondary btn-sm me-1">
                                             <span class="bi bi-eye"></span>
                                             Show
                                         </a>
-                                        <a href="#" class="btn btn-danger btn-sm me-1" onclick="handleDestroy(`{{ route('admin.datajurnal.destroy', $item->id) }}`)">
+                                        <a href="#" class="btn btn-danger btn-sm me-1" onclick="handleDestroy(`{{ route('admin.riwayatabsensi.destroy', $item->id) }}`)">
                                             <span class="bi bi-trash"></span>
                                             Delete
                                         </a>

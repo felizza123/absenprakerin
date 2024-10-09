@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('datajurnal', function (Blueprint $table) {
+        Schema::create('absensi', function (Blueprint $table) {
             $table->id();
             $table->string('nis', 8)->unique();
-            $table->string('namasiswa_id', 128)->references('id')->on('datasiswa')->onDelete('cascade');;
+            $table->foreignId('namasiswa_id', 128)->references('id')->on('datasiswa')->onDelete('cascade');
             $table->string('jurusan');
-            $table->date('haritanggal');
-            $table->time('waktumulai');
-            $table->time('waktuselesai');
-            $table->longText('jurnal', 255);
+            $table->enum('status' , ['Hadir' , ['Izin', 'Sakit']])->default('Hadir');
+            $table->longText('keterangan');
+  
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('datajurnal');
+        Schema::dropIfExists('absensi');
     }
 };

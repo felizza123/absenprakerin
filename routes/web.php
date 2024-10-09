@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AbsensiController;
+
 Route::get('/', function () {
     return redirect('/login');
 });
@@ -29,6 +31,13 @@ Auth::routes([
 
     //SISWA
     //absensi
-    Route::resource('/absensi', App\Http\Controllers\AbsensiController::class);
+    Route::get('/', [AbsensiController::class, 'index'])->name('form.index');
+    Route::post('/', [AbsensiController::class, 'store'])->name('form.store');
+        
+    //riwayat absensi
+    Route::resource('/riwayatabsensi', App\Http\Controllers\RiwayatabsensiController::class)->only(['index', 'show', 'destroy']);
+    
+    //jurnal
+    Route::resource('/jurnal', App\Http\Controllers\JurnalController::class);
     
 });

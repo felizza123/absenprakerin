@@ -5,7 +5,7 @@
         <div class="page-title mb-3">
             <h3 style="text-align: center;">
                 <span class="bi bi-building bold"></span>
-                <strong>Absensi</strong>
+                <strong>Jurnal</strong>
             </h3>
         </div>
 
@@ -15,10 +15,7 @@
                                 <div class="col-md-10">
                                     <div class="card shadow">
                                         <div class="card-header">
-                                            FORM ABSENSI
-                                        </div>
-                                        <div class="card-header">
-                                            Silahkan isi form dibawah ini untuk absen :
+                                            Silahkan isi form dibawah ini untuk mengisi jurnal :
                                         </div>
                                         <div class="card-body">
                     
@@ -28,7 +25,7 @@
                                             </div>  
                                             @endif  
                                              
-                                                    <form action="{{ route('admin.absensi.store') }}" method="POST">
+                                                    <form action="{{ route('admin.jurnal.store') }}" method="POST">
                                                         @csrf
                                                     
                                                         <div class="row mb-3"> <!-- Row untuk Nama Siswa dan NIS -->
@@ -93,37 +90,44 @@
                                                             </div>
                                                         </div>
                                                         
+                                                        <div class="row mb-3"> 
+                                                            <div class="col-md-6">
+                                                                <div class="form-group mb-2">
+                                                                    <label for="waktumulai" class="form-label">Waktu Mulai <span class="text-danger">*</span></label>
+                                                                    <input type="time" name="waktumulai" id="waktumulai" value="{{ old('waktumulai') }}" class="form-control @error('waktumulai') is-invalid @enderror" />
+                                                                    
+                                                                    @error('waktumulai')
+                                                                        <div class="invalid-feedback d-block">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
                                                         
+                                                            <div class="col-md-6">
+                                                                <div class="form-group mb-2">
+                                                                    <label for="waktuselesai" class="form-label">Waktu Selesai <span class="text-danger">*</span></label>
+                                                                    <input type="time" name="waktuselesai" id="waktuselesai" value="{{ old('waktuselesai') }}" class="form-control @error('waktuselesai') is-invalid @enderror" />
+                                                                    
+                                                                    @error('waktuselesai')
+                                                                        <div class="invalid-feedback d-block">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                                <div class="form-group mb-2">
-                                                    <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
-                                                
-                                                <div class="form-check">
-                                                    <input type="radio" name="status" id="Hadir" value="Hadir" class="form-check-input" />
-                                                    <label for="Hadir" class="form-check-label">Hadir</label>
-                                                </div>
-                                                
-                                                <div class="form-check">
-                                                    <input type="radio" name="status" id="Izin" value="Izin" class="form-check-input" />
-                                                    <label for="Izin" class="form-check-label">Izin</label>
-                                                </div>
-
-                                                <div class="form-check">
-                                                    <input type="radio" name="status" id="Sakit" value="Sakit" class="form-check-input" />
-                                                    <label for="Sakit" class="form-check-label">Sakit</label>
-                                                </div>
-                    
+                                                <div class="form-group mb-2">                                                
                                                 <div class="form group mb-3">
                                                     <label for="keterangan">Keterangan :</label>
-                                                    <textarea name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror">{{ old('keterangan')}}</textarea>
-                                                        
-                                                    
+                                                    <textarea name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror">{{ old('keterangan')}}</textarea>   
                                                 </div>
 
                                                 <button type="submit" class="btn btn-primary mb-2">
                                                     Kirim <span class="bi bi-send"></span>
                                                 </button>
-                                                <a href="{{route('admin.absensi.index')}}" class="btn mb-2 btn-secondary">Kembali</a>
+                                                <a href="{{route('admin.jurnal.index')}}" class="btn mb-2 btn-secondary">Kembali</a>
 
                                             </form>
                                         </div>
