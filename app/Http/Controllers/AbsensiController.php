@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dataabsen;
+use App\Models\Riwayatabsensi;
 use App\Models\Absensi;
 use App\Models\Datasiswa;
 use Illuminate\Http\Request;
@@ -22,15 +24,19 @@ class AbsensiController extends Controller
            'jurusan' => 'required',
            'haritanggal' => 'required',
            'status' => 'required',
+           'keterangan' => 'required',
         ],[
             'nis.required' => 'NIS harus diisi',
             'namasiswa_id.required' => 'Nama harus diisi',
             'jurusan.required' => 'Jurusan harus diisi',
             'haritanggal.required' => 'Haritanggal harus diisi',
             'status.required' => 'Status harus diisi',
+            'keterangan.required' => 'Keterangan harus diisi'
         ]);
 
+        Dataabsen::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status', 'keterangan']));
+        Riwayatabsensi::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status', 'keterangan']));
         Absensi::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status']));
-        return redirect()->route('form.index')->with('success', 'Data kamu sudah disimpan.');
+        return redirect()->route('admin.form.index')->with('success', 'Kamu telah absen, silahkan cek riwayat absen.');
     }
 }

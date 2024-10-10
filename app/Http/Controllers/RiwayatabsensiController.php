@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Riwayatabsensi;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,9 @@ class RiwayatabsensiController extends Controller
     public function index()
     {
         $riwayatabsensi = Riwayatabsensi::orderBy('created_at', 'DESC')->get();
+        $riwayatabsensi = Riwayatabsensi::with('datasiswa')
+        ->orderBy('namasiswa_id', 'DESC')
+        ->get();
         return view('pages.riwayatabsensi.index', compact('riwayatabsensi'));
     }
 

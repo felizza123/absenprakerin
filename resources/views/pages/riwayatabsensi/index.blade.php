@@ -16,8 +16,10 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>NIS</th>
                                 <th>Nama Siswa</th>
                                 <th>Hari Tanggal</th>
+                                <th>Jurusan</th>
                                 <th>Status</th>
                                 <th>Keterangan</th>
                                 <th>Actions</th>
@@ -26,16 +28,18 @@
                         <tbody>
                             @foreach($riwayatabsensi as $item)
                                 <tr>
-                                    <td>{{$item->datasiswa->namasiswa}}</td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$item->nis}}</td>
+                                    <td>{{$item->namasiswa_id}}</td>
+                                    <td>{{$item->haritanggal}}</td>
                                     <td>{{$item->jurusan}}</td>
-                                    <td>{{$item->status}}</td>
                                     <td>
                                         @if($item->status == 'Hadir')
                                             <span class="badge bg-success">Hadir</span>
                                         @elseif($item->status == 'Izin')
-                                            <span class="badge bg-danger">Izin</span>
+                                            <span class="badge bg-warning">Izin</span>
                                         @else
-                                            <span class="badge bg-warning">Sakit</span>
+                                            <span class="badge bg-danger">Sakit</span>
                                         @endif
                                     </td>
                                     <td>{{$item->keterangan}}</td>

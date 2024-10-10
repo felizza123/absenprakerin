@@ -24,27 +24,23 @@
                             </tr>
                             <tr>
                                 <th>Nama</th>
-                                <td>{{$datajurnal->nama}}</td>
+                                <td>{{$datajurnal->namasiswa_id}}</td>
                             </tr>
                             <tr>
                                 <th>Hari Tanggal</th>
-                                <td>{{$datajurnal->hari_tanggal}}</td>
+                                <td>{{$datajurnal->haritanggal}}</td>
                             </tr>
                             <tr>
-                                <th>Jam</th>
-                                <td>{{$datajurnal->jam}}</td>
+                                <th>Waktu Mulai</th>
+                                <td>{{$datajurnal->waktumulai}}</td>
+                            </tr>
+                            <tr>
+                                <th>Waktu Selesai</th>
+                                <td>{{$datajurnal->waktuselesai}}</td>
                             </tr>
                             <tr>
                                 <th>Jurnal</th>
                                 <td>{{$datajurnal->jurnal}}</td>
-                            </tr>
-                            <tr>
-                                <th>Created At</th>
-                                <td>{{$datajurnal->created_at}}</td>
-                            </tr>
-                            <tr>
-                                <th>Updated At</th>
-                                <td>{{$datajurnal->updated_at}}</td>
                             </tr>
                         </table>
                     </div>

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('riwayatabsensi', function (Blueprint $table) {
             $table->id();
             $table->string('nis', 8)->unique();
-            $table->foreignId('namasiswa_id', 128)->references('id')->on('datasiswa')->onDelete('cascade');
+            $table->string('namasiswa_id', 128)->references('id')->on('datasiswa')->onDelete('cascade');
             $table->string('jurusan');
+            $table->date('haritanggal');
             $table->enum('status' , ['Hadir' , ['Izin', 'Sakit']])->default('Hadir');
             $table->longText('keterangan');
-   
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@
                                 <th>NIS</th>
                                 <th>Nama Siswa</th>
                                 <th>Jurusan</th>
+                                <th>Hari Tanggal</th>
                                 <th>Status</th>
                                 <th>Keterangan</th>
                                 <th>Actions</th>
@@ -29,9 +30,18 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->nis}}</td>
-                                    <td>{{$item->namasiswa}}</td>
+                                    <td>{{$item->namasiswa_id}}</td>
                                     <td>{{$item->jurusan}}</td>
-                                    <td>{{$item->status}}</td>
+                                    <td>{{$item->haritanggal}}</td>
+                                    <td>
+                                        @if($item->status == 'Hadir')
+                                            <span class="badge bg-success">Hadir</span>
+                                        @elseif($item->status == 'Izin')
+                                            <span class="badge bg-warning">Izin</span>
+                                        @else
+                                            <span class="badge bg-danger">Sakit</span>
+                                        @endif
+                                    </td>                                    
                                     <td>{{$item->keterangan}}</td>
                                     <td>
                                         <a href="{{ route('admin.dataabsen.show', $item->id) }}"

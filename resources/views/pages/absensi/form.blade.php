@@ -3,9 +3,9 @@
 @section('content')
     <div class="page-heading">
         <div class="page-title mb-3">
-            <h3>
-                <span class="bi bi-people"></span>
-                Absensi
+            <h3 style="text-align: center;">
+                <span class="bi bi-building bold"></span>
+                <strong>Absensi</strong>
             </h3>
         </div>
         <section class="section">  
@@ -14,20 +14,17 @@
                     <div class="col-md-10">
                         <div class="card shadow">
                             <div class="card-header">
-                                FORM ABSENSI
-                            </div>
-                            <div class="card-header">
                                 Silahkan isi form dibawah ini untuk absen :
                             </div>
                             <div class="card-body">
-        
                                 @if(Session::has('success'))
                                 <div class="alert alert-success">
                                     {{ Session::get('success') }}
-                                </div>  
-                                @endif  
+                                </div>
+                                @endif
+                             
                                  
-                                        <form action="{{ route('form.store') }}" method="POST">
+                                        <form action="{{ route('admin.form.store') }}" method="POST">
                                             @csrf
                                         
                                             <div class="row mb-3"> <!-- Row untuk Nama Siswa dan NIS -->

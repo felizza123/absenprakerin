@@ -22,6 +22,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>NIS</th>
                                 <th>Nama Siswa</th>
                                 <th>Hari Tanggal</th>
                                 <th>Jurnal</th>
@@ -32,7 +33,8 @@
                             @foreach($jurnal as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{ $item->datasiswa ? $item->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                                    
+                                    <td>{{$item->nis}}</td>
+                                    <td>{{$item->datasiswa ? $item->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                                    
                                     <td>{{$item->haritanggal}}</td>
                                     <td>{{$item->jurnal}}</td>
                                     <td>

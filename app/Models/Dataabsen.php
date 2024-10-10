@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dataabsen extends Model
 {
     use HasFactory;
-    protected $fillable = ['nis', 'namasiswa', 'jurusan', 'status' ,'jam', 'keterangan'];
+    protected $fillable = ['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status' ,'jam', 'keterangan'];
 
 
     public function dataabsen()

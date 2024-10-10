@@ -120,8 +120,8 @@
 
                                                 <div class="form-group mb-2">                                                
                                                 <div class="form group mb-3">
-                                                    <label for="keterangan">Keterangan :</label>
-                                                    <textarea name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror">{{ old('keterangan')}}</textarea>   
+                                                    <label for="jurnal">Jurnal :</label>
+                                                    <textarea name="jurnal" id="jurnal" class="form-control @error('jurnal') is-invalid @enderror">{{ old('jurnal')}}</textarea>   
                                                 </div>
 
                                                 <button type="submit" class="btn btn-primary mb-2">

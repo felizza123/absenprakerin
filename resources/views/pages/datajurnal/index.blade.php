@@ -16,8 +16,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>NIS</th>
                                 <th>Nama</th>
                                 <th>Hari Tanggal</th>
+                                <th>Waktu Mulai</th>
+                                <th>Waktu Selesai</th>
                                 <th>Jurnal</th>
                                 <th>Actions</th>
                             </tr>
@@ -26,8 +29,11 @@
                             @foreach($datajurnal as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->nama}}</td>
+                                    <td>{{$item->nis}}</td>
+                                    <td>{{$item->namasiswa_id}}</td>
                                     <td>{{$item->haritanggal}}</td>
+                                    <td>{{$item->waktumulai}}</td>
+                                    <td>{{$item->waktuselesai}}</td>
                                     <td>{{$item->jurnal}}</td>
                                     <td>
                                         <a href="{{ route('admin.datajurnal.show', $item->id) }}"

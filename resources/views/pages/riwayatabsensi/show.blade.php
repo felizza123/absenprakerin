@@ -5,7 +5,7 @@
         <div class="page-title mb-3">
             <h3>
                 <span class="bi bi-building"></span>
-                Show - Data Absen
+                Riwayat Absensi
             </h3>
         </div>
 
@@ -16,30 +16,30 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>No</th>
-                                <td>{{$dataabsen->id}}</td>
+                                <td>{{$riwayatabsensi->id}}</td>
                             </tr>
                             <tr>
                                 <th>NIS</th>
-                                <td>{{$dataabsen->nis}}</td>
+                                <td>{{$riwayatabsensi->nis}}</td>
                             </tr>
                             <tr>
                                 <th>Nama Siswa</th>
-                                <td>{{$dataabsen->namasiswa_id}}</td>
-                            </tr>
+                                <td>{{$riwayatabsensi->namasiswa_id}}</td>              
+                                </tr>
                             <tr>
                                 <th>Jurusan</th>
-                                <td>{{$dataabsen->jurusan}}</td>
+                                <td>{{$riwayatabsensi->jurusan}}</td>
                             </tr>
                             <tr>
                                 <th>Hari Tanggal</th>
-                                <td>{{$dataabsen->haritanggal}}</td>
+                                <td>{{$riwayatabsensi->haritanggal}}</td>
                             </tr>
-                            <tr>
+                           <tr>
                                 <th>Status</th>
                                 <td>
-                                    @if($dataabsen->status == 'Hadir')
+                                    @if($riwayatabsensi->status == 'Hadir')
                                         <span class="badge bg-success">Hadir</span>
-                                    @elseif($dataabsen->status == 'Izin')
+                                    @elseif($riwayatabsensi->status == 'Izin')
                                         <span class="badge bg-warning">Izin</span>
                                     @else
                                         <span class="badge bg-danger">Sakit</span>
@@ -48,14 +48,14 @@
                            </tr>
                             <tr>
                                 <th>Keterangan</th>
-                                <td>{{$dataabsen->keterangan}}</td>
+                                <td>{{$riwayatabsensi->keterangan}}</td>
                             </tr>
                         </table>
                     </div>
                 </div>
         </section>
         <td>
-            <a href="{{route('admin.dataabsen.index')}}" class="btn btn-primary mb-2">Kembali</a>
+            <a href="{{route('admin.riwayatabsensi.index')}}" class="btn btn-primary mb-2">Kembali</a>
         </td>
 
     </div>   

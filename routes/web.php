@@ -31,8 +31,8 @@ Auth::routes([
 
     //SISWA
     //absensi
-    Route::get('/', [AbsensiController::class, 'index'])->name('form.index');
-    Route::post('/', [AbsensiController::class, 'store'])->name('form.store');
+    Route::get('/absen', [AbsensiController::class, 'index'])->name('form.index');
+    Route::post('/absen', [AbsensiController::class, 'store'])->name('form.store');
         
     //riwayat absensi
     Route::resource('/riwayatabsensi', App\Http\Controllers\RiwayatabsensiController::class)->only(['index', 'show', 'destroy']);

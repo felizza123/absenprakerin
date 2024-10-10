@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dataabsen', function (Blueprint $table) {
+        Schema::create('absensi', function (Blueprint $table) {
             $table->id();
             $table->string('nis', 8)->unique();
-            $table->string('namasiswa', 128);
+            $table->string('namasiswa_id', 128)->references('id')->on('datasiswa')->onDelete('cascade');
             $table->string('jurusan');
+            $table->date('haritanggal');
             $table->enum('status' , ['Hadir' , ['Izin', 'Sakit']])->default('Hadir');
-            $table->longText('keterangan');
+            $table->longText('keterangan')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dataabsen');
+        Schema::dropIfExists('absensi');
     }
 };

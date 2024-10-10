@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Datajurnal;
 use App\Models\Datasiswa;
 use App\Models\Jurnal;
 use Illuminate\Http\Request;
@@ -53,6 +54,7 @@ class JurnalController extends Controller
             'jurnal.required' => 'Jurnal harus diisi',
         ]);
 
+        Datajurnal::create($request->only(['nis', 'namasiswa_id', 'haritanggal', 'jurusan' ,'waktumulai', 'waktuselesai', 'jurnal']));
         Jurnal::create($request->only(['nis', 'namasiswa_id', 'haritanggal', 'jurusan' ,'waktumulai', 'waktuselesai', 'jurnal']));
         return redirect()->route('admin.jurnal.index')->with('success', 'Kamu telah absen.');
         
