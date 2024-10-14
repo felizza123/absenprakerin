@@ -35,7 +35,7 @@ Auth::routes([
     Route::post('/absen', [AbsensiController::class, 'store'])->name('form.store');
         
     //riwayat absensi
-    Route::resource('/riwayatabsensi', App\Http\Controllers\RiwayatabsensiController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('/riwayatabsensi', App\Http\Controllers\RiwayatabsensiController::class)->only(['index', 'show', 'edit', 'update', 'destroy']);
     
     //jurnal
     Route::resource('/jurnal', App\Http\Controllers\JurnalController::class);

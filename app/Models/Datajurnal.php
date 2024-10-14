@@ -18,6 +18,6 @@ class Datajurnal extends Model
 
     public function datasiswa()
     {
-        return $this->belongsTo(Datasiswa::class, 'namasiswa_id');
+        return $this->belongsTo(Datasiswa::class, 'namasiswa_id','id');
     }
 }

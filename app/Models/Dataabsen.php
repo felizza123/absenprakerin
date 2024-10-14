@@ -15,4 +15,10 @@ class Dataabsen extends Model
     {
         return $this->hasMany(Dataabsen::class);
     }
+
+    public function datasiswa()
+    {
+        return $this->belongsTo(Datasiswa::class, 'namasiswa_id','id');
+    }
+    
 }

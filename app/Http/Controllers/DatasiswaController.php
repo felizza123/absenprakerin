@@ -13,9 +13,10 @@ class DatasiswaController extends Controller
      */
     public function index()
     {
-        $datasiswa = Datasiswa::orderBy('created_at', 'DESC')->get();
+        $datasiswa = Datasiswa::orderBy('updated_at', 'DESC')->get();
         return view('pages.datasiswa.index', compact('datasiswa'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -84,34 +85,34 @@ class DatasiswaController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $request->validate([
-            'nis' => 'required|unique:datasiswa,nis|max:8',
-            'nama' => 'required',
-            'jurusan' => 'required',
-            'mulaiprakerin' => 'required',
-            'akhirprakerin' => 'required',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+{
+    $request->validate([
+        'nis' => 'required|max:8|unique:datasiswa,nis,' . $id,
+        'nama' => 'required',
+        'jurusan' => 'required',
+        'mulaiprakerin' => 'required',
+        'akhirprakerin' => 'required',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        $datasiswa = Datasiswa::find($id);
-        if ($request->has('foto')){
-            $imageName = time() . '.' . $request->foto->extension(); //rename file
-            $request->foto->storeAs('image', $imageName, 'public');
-        }else{
-            $imageName = $datasiswa->foto;
-        }
+    $datasiswa = Datasiswa::find($id);
 
-            $datasiswa->nis = $request->nis;
-            $datasiswa->nama = $request->nama;
-            $datasiswa->jurusan = $request->jurusan;
-            $datasiswa->mulaiprakerin = $request->mulaiprakerin;
-            $datasiswa->akhirprakerin = $request->akhirprakerin;
-            $datasiswa->foto = $imageName;
-            $datasiswa->save();
-      
-        return redirect('admin/datasiswa');
+    if ($request->hasFile('foto')) {
+        $imageName = time() . '.' . $request->foto->extension();
+        $request->foto->storeAs('image', $imageName, 'public');
+        $datasiswa->foto = $imageName; // Perbarui foto jika ada yang baru
     }
+
+    $datasiswa->nis = $request->nis;
+    $datasiswa->nama = $request->nama;
+    $datasiswa->jurusan = $request->jurusan;
+    $datasiswa->mulaiprakerin = $request->mulaiprakerin;
+    $datasiswa->akhirprakerin = $request->akhirprakerin;
+    $datasiswa->save();
+
+    return redirect()->route('admin.datasiswa.index');
+}
+
 
     /**
      * Remove the specified resource from storage.

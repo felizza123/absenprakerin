@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->nis}}</td>
-                                    <td>{{$item->namasiswa_id}}</td>
+                                    <td>{{$item->datasiswa ? $item->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                                    
                                     <td>{{$item->haritanggal}}</td>
                                     <td>{{$item->waktumulai}}</td>
                                     <td>{{$item->waktuselesai}}</td>
@@ -38,11 +38,11 @@
                                     <td>
                                         <a href="{{ route('admin.datajurnal.show', $item->id) }}"
                                             class="btn btn-outline-secondary btn-sm me-1">
-                                            <span class="bi bi-eye"></span>
+                                            <i class="align-middle" data-feather="eye"></i>
                                             Show
                                         </a>
                                         <a href="#" class="btn btn-danger btn-sm me-1" onclick="handleDestroy(`{{ route('admin.datajurnal.destroy', $item->id) }}`)">
-                                            <span class="bi bi-trash"></span>
+                                            <i class="align-middle" data-feather="trash"></i>
                                             Delete
                                         </a>
                                     </td>

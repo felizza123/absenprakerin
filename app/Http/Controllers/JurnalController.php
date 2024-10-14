@@ -65,7 +65,8 @@ class JurnalController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $jurnal = Jurnal::find($id);
+        return view('pages.jurnal.show', compact('jurnal'));
     }
 
     /**
@@ -73,7 +74,9 @@ class JurnalController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $jurnal = Jurnal::find($id);
+        $datasiswa = Datasiswa::all();
+        return view('pages.jurnal.edit', compact('jurnal','datasiswa'));
     }
 
     /**
@@ -81,7 +84,26 @@ class JurnalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nis' => 'required',
+            'namasiswa_id' => 'required',
+            'haritanggal' => 'required',
+            'jurusan' => 'required',
+            'waktumulai' => 'required',
+            'waktuselesai' => 'required',
+            'jurnal' => 'required',
+        ],[
+            'nis.required' => 'NIS harus diisi',
+            'namasiswa_id.required' => 'Nama harus diisi',
+            'haritanggal.required' => 'Haritanggal harus diisi',
+            'jurusan.required' => 'Jurusan harus diisi',
+            'waktumulai' => 'Waktumulai harus diisi',
+            'waktuselesai' => 'Waktuselesai harus diisi',
+            'jurnal.required' => 'Jurnal harus diisi',
+        ]);
+        $jurnal = Jurnal::find($id);
+        $jurnal->update($request->all());
+        return redirect('admin/jurnal');
     }
 
     /**
@@ -89,6 +111,8 @@ class JurnalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $jurnal = Jurnal::find($id);
+        $jurnal->delete();
+        return redirect('admin/jurnal');
     }
 }

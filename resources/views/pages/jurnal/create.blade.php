@@ -5,7 +5,7 @@
         <div class="page-title mb-3">
             <h3 style="text-align: center;">
                 <span class="bi bi-building bold"></span>
-                <strong>Jurnal</strong>
+                <strong>Create New - Jurnal</strong>
             </h3>
         </div>
 
@@ -118,16 +118,22 @@
                                                             </div>
                                                         </div>
 
-                                                <div class="form-group mb-2">                                                
-                                                <div class="form group mb-3">
-                                                    <label for="jurnal">Jurnal :</label>
-                                                    <textarea name="jurnal" id="jurnal" class="form-control @error('jurnal') is-invalid @enderror">{{ old('jurnal')}}</textarea>   
-                                                </div>
+                                                            <div class="form-group mb-2">                                                
+                                                                <div class="form group mb-3">
+                                                                    <label for="jurnal">Jurnal <span class="text-danger">*</span></label>
+                                                                    <textarea name="jurnal" id="jurnal" class="form-control @error('jurnal') is-invalid @enderror">{{ old('jurnal')}}</textarea>   
+                                                                </div>
 
-                                                <button type="submit" class="btn btn-primary mb-2">
-                                                    Kirim <span class="bi bi-send"></span>
-                                                </button>
-                                                <a href="{{route('admin.jurnal.index')}}" class="btn mb-2 btn-secondary">Kembali</a>
+                                                                <div class="mb-2">
+                                                                    <button type="submit" class="btn btn-primary w-100">
+                                                                        Simpan <span class="bi bi-send"></span>
+                                                                    </button>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="{{ route('admin.jurnal.index') }}" class="btn btn-secondary w-100">
+                                                                        Kembali
+                                                                    </a>
+                                                                </div>    
 
                                             </form>
                                         </div>

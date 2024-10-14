@@ -110,16 +110,22 @@
                                     </div>
         
                                     <div class="form group mb-3">
-                                        <label for="keterangan">Keterangan :</label>
+                                        <label for="keterangan">Keterangan <span class="text-danger">*</span></label>
                                         <textarea name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror">{{ old('keterangan')}}</textarea>
                                             
                                         
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary mb-2">
-                                        Kirim <span class="bi bi-send"></span>
-                                    </button>
-                                    <a href="{{route('admin.riwayatabsensi.index')}}" class="btn mb-2 btn-secondary">Kembali</a>
+                                    <div class="mb-2">
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            Simpan <span class="bi bi-send"></span>
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <a href="{{ route('admin.riwayatabsensi.index') }}" class="btn btn-secondary w-100">
+                                            Kembali
+                                        </a>
+                                    </div>    
 
                                 </form>
                             </div>

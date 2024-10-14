@@ -5,7 +5,7 @@
         <div class="page-title mb-3">
             <h3>
                 <span class="bi bi-building"></span>
-                Jurnal
+                Show - Jurnal
             </h3>
         </div>
 
@@ -35,15 +35,15 @@
                             </tr>
                             <tr>
                                 <th>Waktu Mulai</th>
-                                <th>{{ \Carbon\Carbon::createFromFormat('H:i:s', $waktumulai)->format('H:i') }} 
+                                <td>{{ \Carbon\Carbon::parse($jurnal->waktumulai)->format('H:i') }}</td>
                             </tr>
                             <tr>
                                 <th>Waktu Selesai</th>
-                                <th>{{ \Carbon\Carbon::createFromFormat('H:i:s', $waktumulai)->format('H:i') }} 
+                                <td>{{ \Carbon\Carbon::parse($jurnal->waktuselesai)->format('H:i') }}</td>
                             </tr>
                             <tr>
-                                <th>Keterangan</th>
-                                <td>{{$jurnal->keterangan}}</td>
+                                <th>Jurnal</th>
+                                <td>{{$jurnal->jurnal}}</td>
                             </tr>
                         </table>
                     </div>

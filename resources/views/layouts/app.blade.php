@@ -22,65 +22,68 @@
 
 <body>
 	<div class="wrapper">
-		<nav id="sidebar" class="sidebar js-sidebar" >
-			<div class="sidebar-content js-simplebar" >
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="http://absenprakerin.test/admin">
-          <span class="align-middle">Absen Prakerin</span>
-        </a>
+					<span class="align-middle">Absen Prakerin</span>
+				</a>
 				<ul class="sidebar-nav">
-					<li class="sidebar-header">
-						Pages Admin
+					<li class="sidebar-header">Pages Admin</li>
+		
+					<li class="sidebar-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.dashboard') }}">
+							<i class="align-middle" data-feather="home"></i> 
+							<span class="align-middle">Dashboard</span>
+						</a>
 					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="{{route('admin.dashboard')}}">
-              				<i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
-            			</a>
+		
+					<li class="sidebar-item {{ request()->routeIs('admin.datasiswa.index') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.datasiswa.index') }}">
+							<i class="align-middle" data-feather="user"></i> 
+							<span class="align-middle">Data Siswa</span>
+						</a>
 					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="{{route('admin.datasiswa.index')}}">
-              				<i class="align-middle" data-feather="user"></i> <span class="align-middle">Data Siswa</span>
-            			</a>
+		
+					<li class="sidebar-item {{ request()->routeIs('admin.dataabsen.index') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.dataabsen.index') }}">
+							<i class="align-middle" data-feather="check-square"></i> 
+							<span class="align-middle">Data Absen</span>
+						</a>
 					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="{{route('admin.dataabsen.index')}}">
-              				<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Data Absen</span>
-            			</a>
+		
+					<li class="sidebar-item {{ request()->routeIs('admin.datajurnal.index') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.datajurnal.index') }}">
+							<i class="align-middle" data-feather="book-open"></i> 
+							<span class="align-middle">Data Jurnal</span>
+						</a>
 					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="{{route('admin.datajurnal.index')}}">
-              				<i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Data Jurnal</span>
-            			</a>
+		
+					<li class="sidebar-header">Pages Siswa</li>
+		
+					<li class="sidebar-item {{ request()->routeIs('admin.form.index') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.form.index') }}">
+							<i class="align-middle" data-feather="check-square"></i> 
+							<span class="align-middle">Absensi</span>
+						</a>
 					</li>
-					
-					<ul class="sidebar-nav">
-						<li class="sidebar-header">
-							Pages Siswa
-						</li>
-
-						<li class="sidebar-item">
-							<a class="sidebar-link" href="{{route('admin.form.index')}}">
-								  <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Absensi</span>
-							</a>
-						</li>
-
-						<li class="sidebar-item">
-							<a class="sidebar-link" href="{{route('admin.riwayatabsensi.index')}}">
-								  <i class="align-middle" data-feather="clock"></i> <span class="align-middle">Riwayat Absensi</span>
-							</a>
-						</li>
-
-						<li class="sidebar-item">
-							<a class="sidebar-link" href="{{route('admin.jurnal.index')}}">
-								  <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Jurnal</span>
-							</a>
-						</li>
-					</ul>
+		
+					<li class="sidebar-item {{ request()->routeIs('admin.riwayatabsensi.index') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.riwayatabsensi.index') }}">
+							<i class="align-middle" data-feather="clock"></i> 
+							<span class="align-middle">Riwayat Absensi</span>
+						</a>
+					</li>
+		
+					<li class="sidebar-item {{ request()->routeIs('admin.jurnal.index') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.jurnal.index') }}">
+							<i class="align-middle" data-feather="clipboard"></i> 
+							<span class="align-middle">Jurnal</span>
+						</a>
+					</li>
+				</ul>
 			</div>
 		</nav>
+		
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">

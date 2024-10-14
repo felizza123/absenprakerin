@@ -19,36 +19,26 @@
                         <div class="form-group mb-2">
                             <label for="nis">NIS </label>
                             <input type="number" name="nis" id="nis" class="form-control @error('nis') is-invalid @enderror" value="{{$datasiswa->nis}}">
-
-                            
                         </div>
 
                         <div class="form-group mb-2">
                             <label for="name">Nama </label>
                             <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{$datasiswa->nama}}">
-
-                            
                         </div>
 
                         <div class="form-group mb-2">
                             <label for="jurusan">Jurusan </label>
-                            <input type="text" name="jurusan" id="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{$datasiswa->jurusan}}">
-
-                            
+                            <input type="text" name="jurusan" id="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{$datasiswa->jurusan}}">                            
                         </div>
 
                         <div class="form-group mb-2">
                             <label for="mulaiprakerin">Mulai Prakerin </label>
-                            <input type="date" name="mulaiprakerin" id="mulaiprakerin" class="form-control @error('mulaiprakerin') is-invalid @enderror" value="{{$datasiswa->mulaiprakerin}}">
-
-                            
+                            <input type="date" name="mulaiprakerin" id="mulaiprakerin" class="form-control @error('mulaiprakerin') is-invalid @enderror" value="{{$datasiswa->mulaiprakerin}}">   
                         </div>
 
                         <div class="form-group mb-2">
                             <label for="akhirprakerin">Akhir Prakerin </label>
-                            <input type="date" name="akhirprakerin" id="akhirprakerin" class="form-control @error('akhirprakerin') is-invalid @enderror" value="{{$datasiswa->akhirprakerin}}">
-
-                           
+                            <input type="date" name="akhirprakerin" id="akhirprakerin" class="form-control @error('akhirprakerin') is-invalid @enderror" value="{{$datasiswa->akhirprakerin}}">   
                         </div>
 
                         <div class="form-group mb-2">
@@ -59,8 +49,16 @@
             </div>
         </section>
 
-        <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="{{route('admin.datasiswa.index')}}" class="btn btn-secondary">Batal</a>
+        <div class="mb-2">
+            <button type="submit" class="btn btn-primary w-100">
+                Simpan <span class="bi bi-send"></span>
+            </button>
+        </div>
+        <div>
+            <a href="{{ route('admin.datasiswa.index') }}" class="btn btn-secondary w-100">
+                Kembali
+            </a>
+        </div> 
             
     </form>
     </div>

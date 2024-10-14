@@ -5,7 +5,7 @@
         <div class="page-title mb-3">
             <h3>
                 <span class="bi bi-building"></span>
-                Riwayat Absensi
+                Show - Riwayat Absensi
             </h3>
         </div>
 
@@ -24,8 +24,8 @@
                             </tr>
                             <tr>
                                 <th>Nama Siswa</th>
-                                <td>{{$riwayatabsensi->namasiswa_id}}</td>              
-                                </tr>
+                                <td>{{ $riwayatabsensi->datasiswa ? $riwayatabsensi->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                                    
+                            </tr>
                             <tr>
                                 <th>Jurusan</th>
                                 <td>{{$riwayatabsensi->jurusan}}</td>

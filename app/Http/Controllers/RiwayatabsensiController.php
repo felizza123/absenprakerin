@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Datasiswa;
 use App\Models\Riwayatabsensi;
 use Illuminate\Http\Request;
 
@@ -13,14 +13,12 @@ class RiwayatabsensiController extends Controller
      */
     public function index()
     {
-        $riwayatabsensi = Riwayatabsensi::orderBy('created_at', 'DESC')->get();
         $riwayatabsensi = Riwayatabsensi::with('datasiswa')
-        ->orderBy('namasiswa_id', 'DESC')
-        ->get();
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+        
         return view('pages.riwayatabsensi.index', compact('riwayatabsensi'));
     }
-
-
 
     /**
      * Display the specified resource.
@@ -34,10 +32,33 @@ class RiwayatabsensiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function edit(string $id)
     {
         $riwayatabsensi = Riwayatabsensi::find($id);
-        $riwayatabsensi->delete();
+        $datasiswa = Datasiswa::all();
+        return view ('pages.riwayatabsensi.edit', compact('riwayatabsensi','datasiswa'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'nis' => 'required',
+           'namasiswa_id' => 'required',
+           'jurusan' => 'required',
+           'haritanggal' => 'required',
+           'status' => 'required',
+           'keterangan' => 'required',
+        ],[
+            'nis.required' => 'NIS harus diisi',
+            'namasiswa_id.required' => 'Nama harus diisi',
+            'jurusan.required' => 'Jurusan harus diisi',
+            'haritanggal.required' => 'Haritanggal harus diisi',
+            'status.required' => 'Status harus diisi',
+            'keterangan.required' => 'Keterangan harus diisi'
+        ]);
+        
+        $riwayatabsensi = Riwayatabsensi::find($id);
+        $riwayatabsensi->update($request->all());
         return redirect('admin/riwayatabsensi');
     }
 }

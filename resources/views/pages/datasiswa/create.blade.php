@@ -105,8 +105,16 @@
             </div>
         </section>
 
-        <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="{{route('admin.datasiswa.index')}}" class="btn btn-secondary">Batal</a>
+        <div class="mb-2">
+            <button type="submit" class="btn btn-primary w-100">
+                Simpan <span class="bi bi-send"></span>
+            </button>
+        </div>
+        <div>
+            <a href="{{ route('admin.datasiswa.index') }}" class="btn btn-secondary w-100">
+                Kembali
+            </a>
+        </div>    
     </form>
     </div>
 @endsection

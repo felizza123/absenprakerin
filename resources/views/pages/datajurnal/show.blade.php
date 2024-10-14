@@ -24,7 +24,7 @@
                             </tr>
                             <tr>
                                 <th>Nama</th>
-                                <td>{{$datajurnal->namasiswa_id}}</td>
+                                <td>{{ $datajurnal->datasiswa ? $datajurnal->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                                    
                             </tr>
                             <tr>
                                 <th>Hari Tanggal</th>
