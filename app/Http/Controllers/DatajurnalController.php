@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jurnal;
 use App\Models\Datajurnal;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,7 @@ class DatajurnalController extends Controller
     public function destroy(string $id)
     {
         $datajurnal = Datajurnal::find($id);
+        $jurnal = Jurnal::where('namasiswa_id', $datajurnal->namasiswa_id)->delete();
         $datajurnal->delete();
         return redirect('admin/datajurnal');
     }

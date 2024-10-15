@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dataabsen;
+use App\Models\Riwayatabsensi;
 use Illuminate\Http\Request;
 
 class DataabsenController extends Controller
@@ -35,7 +36,9 @@ class DataabsenController extends Controller
     public function destroy(string $id)
     {
         $dataabsen = Dataabsen::find($id);
+        $riwayatabsensis = Riwayatabsensi::where('namasiswa_id', $dataabsen->namasiswa_id)->delete();
         $dataabsen->delete();
         return redirect('admin/dataabsen');
     }
+
 }
