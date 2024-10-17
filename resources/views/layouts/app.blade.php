@@ -28,6 +28,7 @@
 					<span class="align-middle">Absen Prakerin</span>
 				</a>
 				<ul class="sidebar-nav">
+					@if (Auth::user()->role == 'admin')
 					<li class="sidebar-header">Pages Admin</li>
 		
 					<li class="sidebar-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
@@ -57,8 +58,17 @@
 							<span class="align-middle">Data Jurnal</span>
 						</a>
 					</li>
-		
+					@endif
+
+					@if (Auth::user()->role == 'siswa')
 					<li class="sidebar-header">Pages Siswa</li>
+
+					<li class="sidebar-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.dashboard') }}">
+							<i class="align-middle" data-feather="home"></i> 
+							<span class="align-middle">Dashboard</span>
+						</a>
+					</li>
 		
 					<li class="sidebar-item {{ request()->routeIs('admin.form.index') ? 'active' : '' }}">
 						<a class="sidebar-link" href="{{ route('admin.form.index') }}">
@@ -80,35 +90,41 @@
 							<span class="align-middle">Jurnal</span>
 						</a>
 					</li>
+					@endif
 				</ul>
 			</div>
 		</nav>
 		
 
 		<div class="main">
-			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle js-sidebar-toggle">
-          			<i class="hamburger align-self-center"></i>
-        		</a>
+			
+		<nav class="navbar navbar-expand navbar-light navbar-bg">
+			<a class="sidebar-toggle js-sidebar-toggle">
+				<i class="hamburger align-self-center"></i>
+			</a>
 
-				<div class="navbar-collapse collapse">
-					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                				<img src="{{ asset('img/avatars/gambarprofil.jpg')}}" class="avatar img-fluid rounded me-1"/> <span class="text-dark">Admin</span>
-              				</a>
-							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="#" onclick="$('#form-logout').submit()">
-									<i class="align-middle me-1" data-feather="log-out"></i>Log out</a>
-									
-								<form id="form-logout" action="{{route('logout')}}" method="POST">
-									@csrf
-								</form>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</nav>
+			<div class="navbar-collapse collapse">
+				<ul class="navbar-nav navbar-align">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+							<img src="{{ asset('img/avatars/gambarprofil.jpg')}}" class="avatar img-fluid rounded me-1"/> 
+							<span class="text-dark">{{ Auth::user()->name }}</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end">
+							
+							
+								<a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
+									<i class="align-middle me-1" data-feather="log-out"></i>Log out
+								</a>
+
+							<form id="form-logout" action="{{route('logout')}}" method="POST">
+								@csrf
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
 			<main class="content">
 				<div class="container-fluid p-0">

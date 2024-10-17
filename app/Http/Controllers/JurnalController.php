@@ -15,7 +15,7 @@ class JurnalController extends Controller
     public function index()
     {
         $jurnal = Jurnal::with('datasiswa')
-        ->orderBy('namasiswa_id', 'DESC')
+        ->orderBy('updated_at', 'DESC')
         ->get();
 
         return view('pages.jurnal.index', compact('jurnal'));
