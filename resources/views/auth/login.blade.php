@@ -21,15 +21,15 @@
 
 	<style>
 	    body {
-	        background-image: url('{{ asset('img/avatars/background-leaf.png') }}'); /* Ganti dengan path gambar latar belakang */
+	        background-image: url('{{ asset('img/avatars/login.jpeg') }}'); 
 	        background-size: cover;
 	        background-repeat: no-repeat;
 	        background-position: center center;
-	        height: 100vh; /* Set tinggi halaman penuh */
+	        height: 100vh; 
 	    }
 
 	    .card {
-	        background-color: rgba(255, 255, 255, 0.8); /* Transparansi untuk card */
+	        background-color: rgba(255, 255, 255, 0.8); 
 	    }
 	</style>
 
@@ -47,16 +47,20 @@
 						<div class="text-center mt-4 ">
 							<h1 class="h3">ABSEN PRAKERIN </h1>
 						</div>
-
 								<div class="m-sm-4">
 									<div class="text-center">
 										<img src="{{asset('img/avatars/gambarprofil.jpg')}}" alt="Siswa Prakerin" class="img-fluid rounded-circle" width="132" height="132" />
-										<p class="lead mb-0 mt-3">Selamat datang</p>
-										<p>Silahkan login untuk melanjutkan</p>
+										
+										<!-- Ganti warna teks "Selamat datang" -->
+										<p class="lead mb-0 mt-3" style="color: #000000;">Selamat datang</p>
+										
+										<!-- Ganti warna teks "Silahkan login" -->
+										<p style="color: #000000;">Silahkan login untuk melanjutkan</p>
 									</div>
+									
 									<form>
 										<div class="mb-3">
-											<label class="form-label">Email</label>
+											<label class="form-label" style="color: #000000;">Email</label>
 											<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
 										</div>
 
@@ -68,7 +72,7 @@
 									    @enderror
 
 										<div class="mb-3">
-											<label class="form-label">Password</label>
+											<label class="form-label" style="color: #000000;">Password</label>
 											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
 										</div>
 
@@ -80,7 +84,7 @@
 									    @enderror
 
 										<div>
-											<label class="form-check">
+											<label class="form-check" style="color: #000000;">
                                             <input class="form-check-input" type="checkbox" value="remember-me" name="remember-me" checked>
                                                 <span class="form-check-label">
                                                      Remember me next time
@@ -91,9 +95,6 @@
 									</form>
 								</form>
 								</div>
-							</div>
-						</div>
-
 					</div>
 				</div>
 			</div>
