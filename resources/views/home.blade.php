@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="d-flex align-items-center">
                     <!-- Gambar -->
-                    <img src="img/avatars/absen.jpg" width="400" height="100" class="img-fluid">
+                    <img src="{{asset ('img/avatars/absen.jpg')}}" width="400" height="100" class="img-fluid">
                     
                     <!-- Teks di samping gambar -->
                     <div class="ms-3">
