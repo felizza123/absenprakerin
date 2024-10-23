@@ -27,8 +27,8 @@
                                     @csrf
                                     @method('PUT')
 
-                                    <div class="row mb-3"> <!-- Baris untuk Nama Siswa dan NIS -->
-                                        <div class="col-md-6"> <!-- Kolom untuk Nama Siswa -->
+                                    <div class="row mb-3"> 
+                                        <div class="col-md-6"> 
                                             <div class="form-group mb-2">
                                                 <label for="namasiswa_id" class="form-label">Nama Siswa <span class="text-danger">*</span></label>
                                                 <select name="namasiswa_id" class="form-select @error('namasiswa_id') is-invalid @enderror">
@@ -58,8 +58,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mb-3"> <!-- Baris untuk Hari Tanggal dan Jurusan -->
-                                        <div class="col-md-6"> <!-- Kolom untuk Hari Tanggal -->
+                                    <div class="row mb-3"> 
+                                        <div class="col-md-6"> 
                                             <div class="form-group mb-2">
                                                 <label for="haritanggal" class="form-label">Hari Tanggal <span class="text-danger">*</span></label>
                                                 <input type="date" name="haritanggal" id="haritanggal" value="{{ old('haritanggal', $jurnal->haritanggal) }}" class="form-control @error('haritanggal') is-invalid @enderror" />

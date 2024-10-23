@@ -24,7 +24,7 @@
                             </tr>
                             <tr>
                                 <th>Nama Siswa</th>
-                                <td>{{ $dataabsen->datasiswa ? $dataabsen->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                                    
+                                <td>{{ $dataabsen->datasiswa ? $dataabsen->datasiswa->nama : 'N/A' }}</td>                                    
                             </tr>
                             <tr>
                                 <th>Jurusan</th>

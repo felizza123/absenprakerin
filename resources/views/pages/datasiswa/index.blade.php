@@ -31,11 +31,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if(count($datasiswa) == 0)
-                            <tr>
-                                <td colspan="6" class="text-center">Tidak ada data</td>
-                            </tr>
-                        @else
                         @foreach($datasiswa as $item)
                             <tr>
                                 <td>{{$loop->iteration}}</td>

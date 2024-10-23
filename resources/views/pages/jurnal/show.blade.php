@@ -24,7 +24,8 @@
                             </tr>
                             <tr>
                                 <th>Nama Siswa</th>
-                                <td>{{ $jurnal->datasiswa ? $jurnal->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                            </tr>
+                                <td>{{ $jurnal->datasiswa ? $jurnal->datasiswa->nama : 'N/A' }}</td>                           
+                            </tr>
                             <tr>
                                 <th>Jurusan</th>
                                 <td>{{$jurnal->jurusan}}</td>

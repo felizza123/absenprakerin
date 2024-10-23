@@ -49,8 +49,8 @@ class JurnalController extends Controller
             'namasiswa_id.required' => 'Nama harus diisi',
             'haritanggal.required' => 'Haritanggal harus diisi',
             'jurusan.required' => 'Jurusan harus diisi',
-            'waktumulai' => 'Waktumulai harus diisi',
-            'waktuselesai' => 'Waktuselesai harus diisi',
+            'waktumulai' => 'Waktu Mulai harus diisi',
+            'waktuselesai' => 'Waktu Selesai harus diisi',
             'jurnal.required' => 'Jurnal harus diisi',
         ]);
 
@@ -97,8 +97,8 @@ class JurnalController extends Controller
             'namasiswa_id.required' => 'Nama harus diisi',
             'haritanggal.required' => 'Haritanggal harus diisi',
             'jurusan.required' => 'Jurusan harus diisi',
-            'waktumulai' => 'Waktumulai harus diisi',
-            'waktuselesai' => 'Waktuselesai harus diisi',
+            'waktumulai' => 'Waktu Mulai harus diisi',
+            'waktuselesai' => 'Waktu Selesai harus diisi',
             'jurnal.required' => 'Jurnal harus diisi',
         ]);
         $jurnal = Jurnal::find($id);

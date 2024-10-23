@@ -24,8 +24,8 @@
                             @enderror
                         </div>
 
-                        <div class="row mb-3"> <!-- Row for Nama and Jurusan -->
-                            <div class="col-md-6"> <!-- Column for Nama -->
+                        <div class="row mb-3"> 
+                            <div class="col-md-6"> 
                                 <div class="form-group mb-2">
                                     <label for="nama">Nama <span class="text-danger">*</span></label>
                                     <input type="text" name="nama" id="nama" value="{{ old('nama') }}" class="form-control @error('nama') is-invalid @enderror" />
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6"> <!-- Column for Jurusan -->
+                            <div class="col-md-6"> 
                                 <div class="form-group mb-2">
                                     <label for="jurusan">Jurusan <span class="text-danger">*</span></label>
                                     <input type="text" name="jurusan" id="jurusan" value="{{ old('jurusan') }}" class="form-control @error('jurusan') is-invalid @enderror" />
@@ -48,8 +48,8 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3"> <!-- Row for Mulai Prakerin and Akhir Prakerin -->
-                            <div class="col-md-6"> <!-- Column for Mulai Prakerin -->
+                        <div class="row mb-3"> 
+                            <div class="col-md-6"> 
                                 <div class="form-group mb-2">
                                     <label for="mulaiprakerin">Mulai Prakerin <span class="text-danger">*</span></label>
                                     <input type="date" name="mulaiprakerin" id="mulaiprakerin" value="{{ old('mulaiprakerin') }}" class="form-control @error('mulaiprakerin') is-invalid @enderror" />
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6"> <!-- Column for Akhir Prakerin -->
+                            <div class="col-md-6"> 
                                 <div class="form-group mb-2">
                                     <label for="akhirprakerin">Akhir Prakerin <span class="text-danger">*</span></label>
                                     <input type="date" name="akhirprakerin" id="akhirprakerin" value="{{ old('akhirprakerin') }}" class="form-control @error('akhirprakerin') is-invalid @enderror" />

@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->nis}}</td>
-                                    <td>{{$item->datasiswa ? $item->datasiswa->nama : 'N/A' }}</td> <!-- Mengambil nama siswa -->                                    
+                                    <td>{{$item->datasiswa ? $item->datasiswa->nama : 'N/A' }}</td>                                     
                                     <td>{{$item->haritanggal}}</td>
                                     <td>{{$item->jurusan}}</td>
                                     <td>
