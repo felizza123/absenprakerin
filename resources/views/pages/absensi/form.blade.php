@@ -17,13 +17,13 @@
                                 Silahkan isi form dibawah ini untuk absen :
                             </div>
                             <div class="card-body">
+
                                 @if(Session::has('success'))
-                                <div class="alert alert-success" style="background-color: #d4edda; color: #155724; border-color: #c3e6cb; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                <div class="alert alert-success" style="background-color: #d4edda; color: #111; border-color: #c3e6cb; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
                                     {{ Session::get('success') }}
                                 </div>
                             @endif
 
-                                 
                                         <form action="{{ route('admin.form.store') }}" method="POST">
                                             @csrf
                                         

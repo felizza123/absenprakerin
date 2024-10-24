@@ -36,7 +36,6 @@ class AbsensiController extends Controller
 
         Dataabsen::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status', 'keterangan']));
         Riwayatabsensi::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status', 'keterangan']));
-        Absensi::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status']));
         return redirect()->route('admin.form.index')->with('success', 'Kamu telah absen, silahkan cek riwayat absen.');
     }
 }

@@ -32,11 +32,11 @@
                             </tr>
                             <tr>
                                 <th>Waktu Mulai</th>
-                                <td>{{$datajurnal->waktumulai}}</td>
+                                <td>{{ \Carbon\Carbon::parse($datajurnal->waktumulai)->format('H:i') }}</td>
                             </tr>
                             <tr>
                                 <th>Waktu Selesai</th>
-                                <td>{{$datajurnal->waktuselesai}}</td>
+                                <td>{{ \Carbon\Carbon::parse($datajurnal->waktuselesai)->format('H:i') }}</td>
                             </tr>
                             <tr>
                                 <th>Jurnal</th>

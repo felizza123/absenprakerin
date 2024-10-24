@@ -9,6 +9,12 @@
             </h3>
         </div>
 
+        <a href=""
+            class="btn btn-primary mb-4">
+                <i class="align-middle" data-feather="plus-circle" ></i>
+                Created New
+        </a>
+
         <section class="section">
             <div class="card">
                 <div class="card-body">
@@ -32,8 +38,8 @@
                                     <td>{{$item->nis}}</td>
                                     <td>{{$item->datasiswa ? $item->datasiswa->nama : 'N/A' }}</td>                                     
                                     <td>{{$item->haritanggal}}</td>
-                                    <td>{{$item->waktumulai}}</td>
-                                    <td>{{$item->waktuselesai}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->waktumulai)->format('H:i') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->waktuselesai)->format('H:i') }}</td>
                                     <td>{{$item->jurnal}}</td>
                                     <td>
                                         <a href="{{ route('admin.datajurnal.show', $item->id) }}"
@@ -61,6 +67,12 @@
     </form>
     
 @endsection
+
+@push('scripts')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+@endpush
 
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
