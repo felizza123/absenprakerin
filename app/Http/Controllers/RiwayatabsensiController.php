@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dataabsen;
 use App\Models\Datasiswa;
 use App\Models\Riwayatabsensi;
 use Illuminate\Http\Request;
@@ -59,6 +60,21 @@ class RiwayatabsensiController extends Controller
         
         $riwayatabsensi = Riwayatabsensi::find($id);
         $riwayatabsensi->update($request->all());
+
+        $dataabsen = Dataabsen::where('nis', $request->nis)
+        ->where('haritanggal', $request->haritanggal)
+        ->first();
+            if ($dataabsen) {
+                $dataabsen->update([
+                    'nis' => $request->nis,
+                    'namasiswa_id' => $request->namasiswa_id,
+                    'jurusan' => $request->jurusan,
+                    'haritanggal' => $request->haritanggal,
+                    'status' => $request->status,
+                    'keterangan' => $request->keterangan,
+                ]);
+            }
+
         return redirect('admin/riwayatabsensi');
     }
 }

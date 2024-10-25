@@ -115,6 +115,5 @@
                 Kembali
             </a>
         </div>    
-    </form>
     </div>
 @endsection
