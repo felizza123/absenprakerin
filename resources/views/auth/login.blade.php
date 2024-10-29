@@ -21,7 +21,7 @@
 
 	<style>
 	    body {
-	        background-image: url('{{ asset('img/avatars/login.jpeg') }}'); 
+	        background-image: url('{{ asset('img/avatars/background-leaf.png') }}'); 
 	        background-size: cover;
 	        background-repeat: no-repeat;
 	        background-position: center center;
@@ -51,11 +51,9 @@
 									<div class="text-center">
 										<img src="{{asset('img/avatars/gambarprofil.jpg')}}" alt="Siswa Prakerin" class="img-fluid rounded-circle" width="132" height="132" />
 										
-										<!-- Ganti warna teks "Selamat datang" -->
-										<p class="lead mb-0 mt-3" style="color: #000000;">Selamat datang</p>
+										<p class="mb-0 mt-3" style="color: #000000;">Selamat Datang</p>
+										<p style="color: #000000;">Silahkan login untuk melanjutkan :</p>
 										
-										<!-- Ganti warna teks "Silahkan login" -->
-										<p style="color: #000000;">Silahkan login untuk melanjutkan</p>
 									</div>
 									
 									<form>

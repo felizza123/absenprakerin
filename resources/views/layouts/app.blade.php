@@ -108,10 +108,9 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
 							<img src="{{ asset('img/avatars/gambarprofil.jpg')}}" class="avatar img-fluid rounded me-1"/> 
-							<span class="text-dark" style="font-family: 'Lucida Handwriting' ">{{ Auth::user()->name }}</span>
+								<span class="text-dark" style="font-family: 'Lucida Handwriting' ">{{ Auth::user()->name }}</span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-end">
-							
 							
 								<a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
 									<i class="align-middle me-1" data-feather="log-out"></i>Log out
