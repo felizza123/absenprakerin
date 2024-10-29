@@ -103,6 +103,21 @@ class JurnalController extends Controller
         ]);
         $jurnal = Jurnal::find($id);
         $jurnal->update($request->all());
+
+        $datajurnal = Datajurnal::where('nis', $request->nis)
+        ->where('haritanggal', $request->haritanggal)
+        ->first();
+        if ($datajurnal) {
+            $datajurnal->update([
+                'nis' => $request->nis,
+                'namasiswa_id' => $request->namasiswa_id,
+                'jurusan' => $request->jurusan,
+                'haritanggal' => $request->haritanggal,
+                'waktumulai' => $request->waktumulai,
+                'waktuselesai' => $request->waktuselesai,
+                'jurnal' => $request->jurnal
+            ]);
+        }
         return redirect('admin/jurnal');
     }
 

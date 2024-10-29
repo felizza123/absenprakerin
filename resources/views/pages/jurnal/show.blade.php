@@ -49,6 +49,7 @@
                         </table>
                     </div>
                 </div>
+            </div>
         </section>
         <td>
             <a href="{{route('admin.jurnal.index')}}" class="btn btn-primary mb-2">Kembali</a>

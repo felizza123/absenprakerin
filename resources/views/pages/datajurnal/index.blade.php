@@ -9,12 +9,6 @@
             </h3>
         </div>
 
-        <a href=""
-            class="btn btn-primary mb-4">
-                <i class="align-middle" data-feather="plus-circle" ></i>
-                Created New
-        </a>
-
         <section class="section">
             <div class="card">
                 <div class="card-body">
