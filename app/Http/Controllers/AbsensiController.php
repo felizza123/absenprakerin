@@ -12,8 +12,8 @@ class AbsensiController extends Controller
 {
     public function index()
     {
-        $datasiswa = Datasiswa::all();
-        return view('pages.absensi.form', compact('datasiswa'));
+        $datasiswa = Datasiswa::all(); // Mengambil semua data siswa
+        return view('pages.absensi.form', compact('datasiswa')); // Mengirim data absensi yang telah dibuat ke dalam tampilan
     }
 
     public function store(Request $request)
@@ -34,8 +34,8 @@ class AbsensiController extends Controller
             'keterangan.required' => 'Keterangan harus diisi'
         ]);
 
-        Dataabsen::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status', 'keterangan']));
-        Riwayatabsensi::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status', 'keterangan']));
-        return redirect()->route('admin.form.index')->with('success', 'Kamu telah absen, silahkan cek riwayat absen.');
+        Dataabsen::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status', 'keterangan'])); // Membuat data absen
+        Riwayatabsensi::create($request->only(['nis', 'namasiswa_id', 'jurusan', 'haritanggal', 'status', 'keterangan'])); // Membuat data riwayat absen
+        return redirect()->route('admin.form.index')->with('success', 'Kamu telah absen, silahkan cek riwayat absen.'); // Mengarahkan ke halaman riwayat absen
     }
 }

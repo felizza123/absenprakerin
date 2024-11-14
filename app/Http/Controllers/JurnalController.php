@@ -16,9 +16,9 @@ class JurnalController extends Controller
     {
         $jurnal = Jurnal::with('datasiswa')
         ->orderBy('updated_at', 'DESC')
-        ->get();
+        ->get(); //mengambil data dan mengurutkannya berdasarkan kolom created_at dalam urutan descending (terbaru ke terlama)
 
-        return view('pages.jurnal.index', compact('jurnal'));
+        return view('pages.jurnal.index', compact('jurnal')); //mengirim jurnal yang telah dibuat ke dalam tampilan
     }
 
     /**
@@ -26,8 +26,8 @@ class JurnalController extends Controller
      */
     public function create()
     {
-        $datasiswa = Datasiswa::all();
-        return view('pages.jurnal.create', compact('datasiswa'));
+        $datasiswa = Datasiswa::all(); // Mengambil semua data siswa
+        return view('pages.jurnal.create', compact('datasiswa')); // Mengirim jurnal yang telah dibuat ke dalam tampilan
     }
 
     /**
@@ -54,9 +54,9 @@ class JurnalController extends Controller
             'jurnal.required' => 'Jurnal harus diisi',
         ]);
 
-        Datajurnal::create($request->only(['nis', 'namasiswa_id', 'haritanggal', 'jurusan' ,'waktumulai', 'waktuselesai', 'jurnal']));
-        Jurnal::create($request->only(['nis', 'namasiswa_id', 'haritanggal', 'jurusan' ,'waktumulai', 'waktuselesai', 'jurnal']));
-        return redirect()->route('admin.jurnal.index')->with('success', 'Kamu telah absen.');
+        Datajurnal::create($request->only(['nis', 'namasiswa_id', 'haritanggal', 'jurusan' ,'waktumulai', 'waktuselesai', 'jurnal'])); // Membuat data jurnal
+        Jurnal::create($request->only(['nis', 'namasiswa_id', 'haritanggal', 'jurusan' ,'waktumulai', 'waktuselesai', 'jurnal'])); // Membuat jurnal
+        return redirect()->route('admin.jurnal.index'); // Mengarahkan ke halaman jurnal
         
     }
 
@@ -65,8 +65,8 @@ class JurnalController extends Controller
      */
     public function show(string $id)
     {
-        $jurnal = Jurnal::find($id);
-        return view('pages.jurnal.show', compact('jurnal'));
+        $jurnal = Jurnal::find($id); //mengambil jurnal berdasarkan id
+        return view('pages.jurnal.show', compact('jurnal')); //mengirim jurnal yang telah dibuat ke dalam tampilan
     }
 
     /**
@@ -74,9 +74,9 @@ class JurnalController extends Controller
      */
     public function edit(string $id)
     {
-        $jurnal = Jurnal::find($id);
-        $datasiswa = Datasiswa::all();
-        return view('pages.jurnal.edit', compact('jurnal','datasiswa'));
+        $jurnal = Jurnal::find($id); //mengambil jurnal berdasarkan id
+        $datasiswa = Datasiswa::all(); // Mengambil semua data siswa
+        return view('pages.jurnal.edit', compact('jurnal','datasiswa')); // Mengirim jurnal yang telah dibuat ke dalam tampilan
     }
 
     /**
@@ -101,12 +101,12 @@ class JurnalController extends Controller
             'waktuselesai' => 'Waktu Selesai harus diisi',
             'jurnal.required' => 'Jurnal harus diisi',
         ]);
-        $jurnal = Jurnal::find($id);
-        $jurnal->update($request->all());
+        $jurnal = Jurnal::find($id); //mengambil jurnal berdasarkan id
+        $jurnal->update($request->all()); // Perbarui jurnal
 
         $datajurnal = Datajurnal::where('nis', $request->nis)
         ->where('haritanggal', $request->haritanggal)
-        ->first();
+        ->first(); //mengambil jurnal berdasarkan nis dan haritanggal
         if ($datajurnal) {
             $datajurnal->update([
                 'nis' => $request->nis,
@@ -116,9 +116,9 @@ class JurnalController extends Controller
                 'waktumulai' => $request->waktumulai,
                 'waktuselesai' => $request->waktuselesai,
                 'jurnal' => $request->jurnal
-            ]);
+            ]); // Perbarui data jurnal
         }
-        return redirect('admin/jurnal');
+        return redirect('admin/jurnal'); // Mengarahkan ke halaman jurnal
     }
 
     /**
@@ -126,8 +126,8 @@ class JurnalController extends Controller
      */
     public function destroy(string $id)
     {
-        $jurnal = Jurnal::find($id);
-        $jurnal->delete();
-        return redirect('admin/jurnal');
+        $jurnal = Jurnal::find($id); //mengambil jurnal berdasarkan id
+        $jurnal->delete(); //menghapus jurnal
+        return redirect('admin/jurnal'); //mengarahkan ke halaman jurnal
     }
 }

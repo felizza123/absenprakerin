@@ -13,9 +13,9 @@ class DatajurnalController extends Controller
      */
     public function index()
     {
-        $datajurnal = Datajurnal::orderBy('created_at', 'DESC')->get();
-        return view('pages.datajurnal.index', compact('datajurnal'));
-    }
+        $datajurnal = Datajurnal::orderBy('created_at', 'DESC')->get(); //mengambil data dan mengurutkannya berdasarkan kolom created_at dalam urutan descending (terbaru ke terlama)
+        return view('pages.datajurnal.index', compact('datajurnal')); //mengirim data jurnal yang telah dibuat ke dalam tampilan
+    } 
 
     
     /**
@@ -23,8 +23,8 @@ class DatajurnalController extends Controller
      */
     public function show(string $id)
     {
-        $datajurnal = Datajurnal::find($id);
-        return view('pages.datajurnal.show', compact('datajurnal'));
+        $datajurnal = Datajurnal::find($id); //mengambil data jurnal berdasarkan id
+        return view('pages.datajurnal.show', compact('datajurnal')); //mengirim data jurnal yang telah dibuat ke dalam tampilan
     }
 
 
@@ -33,9 +33,9 @@ class DatajurnalController extends Controller
      */
     public function destroy(string $id)
     {
-        $datajurnal = Datajurnal::find($id);
-        $jurnal = Jurnal::where('namasiswa_id', $datajurnal->namasiswa_id)->delete();
-        $datajurnal->delete();
-        return redirect('admin/datajurnal');
+        $datajurnal = Datajurnal::find($id); // mengambil data jurnal berdasarkan id
+        $jurnal = Jurnal::where('namasiswa_id', $datajurnal->namasiswa_id)->delete(); //menghapus jurnal jika dalam data jurnal terhapus
+        $datajurnal->delete(); //menghapus data jurnal
+        return redirect('admin/datajurnal'); //mengarahkan ke halaman data jurnal
     }
 }

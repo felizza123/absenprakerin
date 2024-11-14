@@ -16,9 +16,9 @@ class RiwayatabsensiController extends Controller
     {
         $riwayatabsensi = Riwayatabsensi::with('datasiswa')
             ->orderBy('updated_at', 'DESC')
-            ->get();
+            ->get(); //mengambil data dan mengurutkannya berdasarkan kolom created_at dalam urutan descending (terbaru ke terlama)
         
-        return view('pages.riwayatabsensi.index', compact('riwayatabsensi'));
+        return view('pages.riwayatabsensi.index', compact('riwayatabsensi')); //mengirim riwayat absensi yang telah dibuat ke dalam tampilan
     }
 
     /**
@@ -26,8 +26,8 @@ class RiwayatabsensiController extends Controller
      */
     public function show(string $id)
     {
-        $riwayatabsensi = Riwayatabsensi::find($id);
-        return view('pages.riwayatabsensi.show', compact('riwayatabsensi'));
+        $riwayatabsensi = Riwayatabsensi::find($id); //mengambil riwayat absensi berdasarkan id
+        return view('pages.riwayatabsensi.show', compact('riwayatabsensi')); //mengirim riwayat absensi yang telah dibuat ke dalam tampilan
     }
 
     /**
@@ -35,9 +35,9 @@ class RiwayatabsensiController extends Controller
      */
     public function edit(string $id)
     {
-        $riwayatabsensi = Riwayatabsensi::find($id);
-        $datasiswa = Datasiswa::all();
-        return view ('pages.riwayatabsensi.edit', compact('riwayatabsensi','datasiswa'));
+        $riwayatabsensi = Riwayatabsensi::find($id); //mengambil riwayat absensi berdasarkan id
+        $datasiswa = Datasiswa::all(); // Mengambil semua data siswa
+        return view ('pages.riwayatabsensi.edit', compact('riwayatabsensi','datasiswa')); //mengirim riwayat absensi yang telah dibuat ke dalam tampilan
     }
 
     public function update(Request $request, string $id)
@@ -58,12 +58,12 @@ class RiwayatabsensiController extends Controller
             'keterangan.required' => 'Keterangan harus diisi'
         ]);
         
-        $riwayatabsensi = Riwayatabsensi::find($id);
-        $riwayatabsensi->update($request->all());
+        $riwayatabsensi = Riwayatabsensi::find($id); //mengambil riwayat absensi berdasarkan id
+        $riwayatabsensi->update($request->all()); // Perbarui riwayat absensi
 
         $dataabsen = Dataabsen::where('nis', $request->nis)
         ->where('haritanggal', $request->haritanggal)
-        ->first();
+        ->first(); //mengambil riwayat absensi berdasarkan nis dan haritanggal
             if ($dataabsen) {
                 $dataabsen->update([
                     'nis' => $request->nis,
@@ -72,9 +72,9 @@ class RiwayatabsensiController extends Controller
                     'haritanggal' => $request->haritanggal,
                     'status' => $request->status,
                     'keterangan' => $request->keterangan,
-                ]);
+                ]); // Perbarui riwayat absensi
             }
 
-        return redirect('admin/riwayatabsensi');
+        return redirect('admin/riwayatabsensi'); //mengarahkan ke halaman riwayat absensi
     }
 }

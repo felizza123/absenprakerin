@@ -13,8 +13,8 @@ class DatasiswaController extends Controller
      */
     public function index()
     {
-        $datasiswa = Datasiswa::orderBy('updated_at', 'DESC')->get();
-        return view('pages.datasiswa.index', compact('datasiswa'));
+        $datasiswa = Datasiswa::orderBy('updated_at', 'DESC')->get(); //mengambil data dan mengurutkannya berdasarkan kolom created_at dalam urutan descending (terbaru ke terlama)
+        return view('pages.datasiswa.index', compact('datasiswa')); //mengirim data absen yang telah dibuat ke dalam tampilan
     }
 
 
@@ -23,7 +23,7 @@ class DatasiswaController extends Controller
      */
     public function create()
     {
-        return view('pages.datasiswa.create');
+        return view('pages.datasiswa.create'); //mengirim data siswa yang telah dibuat ke dalam tampilan
     }
 
     /**
@@ -48,7 +48,7 @@ class DatasiswaController extends Controller
         ]);
 
        $imageName = time() . '.' . $request->foto->extension(); //rename file
-        $request->foto->storeAs('image', $imageName, 'public');
+        $request->foto->storeAs('image', $imageName, 'public'); //simpan file
 
         $datasiswas = Datasiswa::create([
             'nis' => $request->nis,
@@ -57,9 +57,9 @@ class DatasiswaController extends Controller
             'mulaiprakerin' => $request->mulaiprakerin,
             'akhirprakerin' => $request->akhirprakerin,
             'foto' => $imageName,
-        ]);
+        ]); 
 
-        return redirect('admin/datasiswa');
+        return redirect('admin/datasiswa'); //redirect ke halaman absen
     
     }
 

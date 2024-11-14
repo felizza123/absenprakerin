@@ -13,8 +13,8 @@ class DataabsenController extends Controller
      */
     public function index()
     {
-        $dataabsen = Dataabsen::orderBy('created_at', 'DESC')->get();
-        return view('pages.dataabsen.index', compact('dataabsen'));
+        $dataabsen = Dataabsen::orderBy('created_at', 'DESC')->get(); //mengambil data dan mengurutkannya berdasarkan kolom created_at dalam urutan descending (terbaru ke terlama)
+        return view('pages.dataabsen.index', compact('dataabsen')); //mengirim data absen yang telah dibuat ke dalam tampilan
     }
 
    
@@ -24,8 +24,8 @@ class DataabsenController extends Controller
      */
     public function show(string $id)
     {
-        $dataabsen = Dataabsen::find($id);
-        return view('pages.dataabsen.show', compact('dataabsen'));
+        $dataabsen = Dataabsen::find($id); //mengambil data absen berdasarkan id
+        return view('pages.dataabsen.show', compact('dataabsen')); //mengirim data absen yang telah dibuat ke dalam tampilan
     }
 
 
@@ -35,10 +35,10 @@ class DataabsenController extends Controller
      */
     public function destroy(string $id)
     {
-        $dataabsen = Dataabsen::find($id);
-        $riwayatabsensis = Riwayatabsensi::where('namasiswa_id', $dataabsen->namasiswa_id)->delete();
-        $dataabsen->delete();
-        return redirect('admin/dataabsen');
+        $dataabsen = Dataabsen::find($id); //mengambil data absen berdasarkan id
+        $riwayatabsensis = Riwayatabsensi::where('namasiswa_id', $dataabsen->namasiswa_id)->delete(); //menghapus riwayat absen jika dalam data absen terhapus
+        $dataabsen->delete(); //menghapus data absen
+        return redirect('admin/dataabsen'); //mengarahkan ke halaman data absen
     }
 
 }
