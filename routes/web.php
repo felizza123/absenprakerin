@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     // ADMIN
 
+    Route::group(['middleware' => ['auth', App\Http\Middleware\AdminAksesMiddleware::class]], function() {
         // data siswa
         Route::resource('/datasiswa', App\Http\Controllers\DatasiswaController::class);
 
@@ -31,10 +32,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
         // data absen
         Route::resource('/dataabsen', App\Http\Controllers\DataabsenController::class)->only(['index', 'show', 'destroy']);
+    });
+        
     
 
     // SISWA
 
+    Route::group(['middleware' => ['auth', App\Http\Middleware\SiswaAksesMiddleware::class]], function() {
         // absensi
         Route::get('/absen', [AbsensiController::class, 'index'])->name('form.index');
         Route::post('/absen', [AbsensiController::class, 'store'])->name('form.store');
@@ -44,5 +48,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
         // jurnal
         Route::resource('/jurnal', App\Http\Controllers\JurnalController::class);
-
+    });
 });

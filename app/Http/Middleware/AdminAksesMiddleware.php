@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class SiswaAccess
+class AdminAksesMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class SiswaAccess
      */
     public function handle($request, $next): Response
     {
-        if (!Auth::check() || Auth::user()->role !== 'siswa') {
-            return redirect('/dashboard');
+        if (Auth::user()->role != 'admin') {
+            abort(404);
         }
         return $next($request);
     }

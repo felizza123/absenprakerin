@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('jurnal', function (Blueprint $table) {
             $table->id();
-            $table->string('nis', 8)->unique();
+            $table->string('nis', 8);
             $table->string('namasiswa_id', 128)->references('id')->on('datasiswa')->onDelete('cascade');;
             $table->string('jurusan');
             $table->date('haritanggal');
