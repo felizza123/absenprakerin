@@ -19,8 +19,6 @@
                                 <th>NIS</th>
                                 <th>Nama</th>
                                 <th>Hari Tanggal</th>
-                                <th>Waktu Mulai</th>
-                                <th>Waktu Selesai</th>
                                 <th>Jurnal</th>
                                 <th>Actions</th>
                             </tr>
@@ -32,8 +30,6 @@
                                     <td>{{$item->nis}}</td>
                                     <td>{{$item->datasiswa ? $item->datasiswa->nama : 'N/A' }}</td>                                     
                                     <td>{{$item->haritanggal}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->waktumulai)->format('H:i') }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->waktuselesai)->format('H:i') }}</td>
                                     <td>{{$item->jurnal}}</td>
                                     <td>
                                         <a href="{{ route('admin.datajurnal.show', $item->id) }}"

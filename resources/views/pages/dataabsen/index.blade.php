@@ -18,7 +18,6 @@
                                 <th>No</th>
                                 <th>NIS</th>
                                 <th>Nama Siswa</th>
-                                <th>Jurusan</th>
                                 <th>Hari Tanggal</th>
                                 <th>Status</th>
                                 <th>Keterangan</th>
@@ -31,7 +30,6 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->nis}}</td>
                                     <td>{{$item->datasiswa ? $item->datasiswa->nama : 'N/A' }}</td>                                     
-                                    <td>{{$item->jurusan}}</td>
                                     <td>{{$item->haritanggal}}</td>
                                     <td>
                                         @if($item->status == 'Hadir')

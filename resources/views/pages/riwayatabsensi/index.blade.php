@@ -19,7 +19,6 @@
                                 <th>NIS</th>
                                 <th>Nama Siswa</th>
                                 <th>Hari Tanggal</th>
-                                <th>Jurusan</th>
                                 <th>Status</th>
                                 <th>Keterangan</th>
                                 <th>Actions</th>
@@ -32,7 +31,6 @@
                                     <td>{{$item->nis}}</td>
                                     <td>{{$item->datasiswa ? $item->datasiswa->nama : 'N/A' }}</td>                                     
                                     <td>{{$item->haritanggal}}</td>
-                                    <td>{{$item->jurusan}}</td>
                                     <td>
                                         @if($item->status == 'Hadir')
                                             <span class="badge bg-success">Hadir</span>

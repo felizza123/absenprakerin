@@ -16,7 +16,7 @@ class JurnalController extends Controller
     {
         $jurnal = Jurnal::with('datasiswa')
         ->orderBy('updated_at', 'DESC')
-        ->get(); //mengambil data dan mengurutkannya berdasarkan kolom created_at dalam urutan descending (terbaru ke terlama)
+        ->get(); //mengambil data dan mengurutkannya berdasarkan kolom nama dalam urutan descending 
 
         return view('pages.jurnal.index', compact('jurnal')); //mengirim jurnal yang telah dibuat ke dalam tampilan
     }
@@ -26,7 +26,7 @@ class JurnalController extends Controller
      */
     public function create()
     {
-        $datasiswa = Datasiswa::all(); // Mengambil semua data siswa
+        $datasiswa = Datasiswa::orderBy('nama', 'ASC')->get(); //mengambil data dan mengurutkannya berdasarkan kolom nama dalam urutan Ascending (berdasarkan abjad A-Z)
         return view('pages.jurnal.create', compact('datasiswa')); // Mengirim jurnal yang telah dibuat ke dalam tampilan
     }
 

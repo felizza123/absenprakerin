@@ -13,7 +13,7 @@ class DatasiswaController extends Controller
      */
     public function index()
     {
-        $datasiswa = Datasiswa::orderBy('updated_at', 'DESC')->get(); //mengambil data dan mengurutkannya berdasarkan kolom created_at dalam urutan descending (terbaru ke terlama)
+        $datasiswa = Datasiswa::orderBy('nama', 'ASC')->get(); //mengambil data dan mengurutkannya berdasarkan kolom nama dalam urutan Ascending (berdasarkan abjad A-Z)
         return view('pages.datasiswa.index', compact('datasiswa')); //mengirim data absen yang telah dibuat ke dalam tampilan
     }
 

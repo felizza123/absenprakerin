@@ -12,8 +12,9 @@ class AbsensiController extends Controller
 {
     public function index()
     {
-        $datasiswa = Datasiswa::all(); // Mengambil semua data siswa
-        return view('pages.absensi.form', compact('datasiswa')); // Mengirim data absensi yang telah dibuat ke dalam tampilan
+        $datasiswa = Datasiswa::orderBy('nama', 'ASC')->get(); //mengambil data dan mengurutkannya berdasarkan kolom nama dalam urutan Ascending (berdasarkan abjad A-Z)
+        $item = new Dataabsen(); 
+        return view('pages.absensi.form', compact('datasiswa','item')); // Mengirim data absensi yang telah dibuat ke dalam tampilan
     }
 
     public function store(Request $request)
